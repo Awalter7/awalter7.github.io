@@ -70,7 +70,7 @@
   }
   #lrg-active-wraper{
     position: absolute;
-    top: 330px;
+    top: 300px;
     left: 60vw;
     width: 400px;
     height: 800px;
@@ -111,7 +111,7 @@
     font-family: 'emoFont',sans-serif;
     font-size: 4vw;
 
-    top: 400px;
+    top: 300px;
     left: 50px;
   }
 
