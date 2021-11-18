@@ -254,11 +254,20 @@ html{
       transform: translate(-100px, 100px);
     }
   }
+  .rotate{
+    transform: rotate(45deg);
+    position: absolute;
+    top: 900px;
+    align-self: center;
+  }
   .arrow{
     position: relative;
 
   }
-  .bounce {
+  .bounceA1 {
+    animation: bounce 2s infinite;
+  }
+  .bounceA2 {
     animation: bounce 2s infinite;
   }
   @keyframes bounce {
