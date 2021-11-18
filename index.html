@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel ="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <script src="js/main.js"></script>
+        <title>Document</title>
+        <style>
+
+        .image {
+            position: absolute;
+            content:url("img/HD-Wallpaper-Dark-Aesthetic.png");
+            width: 95%;
+            top:1000px;
+            height: 100px;
+            padding: 2px;
+            margin-left: 40px;
+            background-color: rgba(243, 220, 190, 0.925);
+        }​
+
+        </style>
+    </head>
+    <body>
+
+        <div class="main-wrapper">
+            <div class="noise-wrapper">
+            <div class="noise">
+            </div>
+            </div>
+            <nav class="navbar navbar-custom fixed-top navbar-expand-lg">
+                <span class="navbar-text navbar-text d-none d-sm-none d-md-none d-lg-none d-xl-block">
+                    [AIO]
+                </span>
+                <div class="navbar-nav ml-auto">
+                    <div class="navbar-brand">
+                        Home
+                    </div>
+                    <a class="nav-item nav-link nav-link " href="ContactMe.html" data-text="Contact">contact<span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link nav-link " href="https://www.usca.edu" data-text="USCA">usca</a>
+                    <a class="nav-item nav-link nav-link " id = "nav-item-3" href="https://www.github.com/awalter7" data-text="GitHub">gitHub</a>
+                </div>
+            </nav>
+            <h1 id = "welcome-text">Starting...</h1>
+            <div id = "lrg-active-wraper">
+                <div id = "active-wraper">
+                    <svg id = "bouncy-arrow1" class = "arrow" width="53px" height="53px" viewBox="0 0 53 53" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g id="arrow-wrap" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="arrow" class="path" transform="translate(-904.000000, -343.000000)" stroke="#FFFFFF" stroke-width="2">
+                                <path d="M912.545285,345 L946.743,379.198 L946.74357,345.246688 L956,345.246688 L956,395 L906.246688,395 L906.246688,385.74357 L940.198,385.743 L906,351.545285 L912.545285,345 Z" id="wrap-arrow1a"></path>
+                            </g>
+                        </g>
+                    </svg>
+                    <h2 id = "about-text"></h2>
+                </div>
+                <div id = "about-p"><p>Our group is comprised of creative individuals who have found a passion in computer sience. While some of our members find greater abuilities in other sectors of the proggraming vurse, we have come together to demenstrate what the collaberation of those skills can do</p></div>
+            </div> 
+
+            <div class="image">
+            </div>
+            <div class ="onan-wrapper">
+                <span id = "onan-header">
+                    <span>
+                        Onan.
+                    </span> 
+                    <span>
+                        game
+                    </span>
+                    <span>
+                        devlopment
+                    </span>
+                </span>
+                <img id = "tv" src="img\ezgif-7-4673472ea577.gif" alt="rotating image">
+                <img id = "delorian" src="img\ezgif-7-ded520e9c182.gif" alt="rotating image">
+
+            </div >
+
+            <div class = "ft-wrapper">
+            </div>
+            <script>
+                const textWelcome = document.getElementById('welcome-text');
+                
+                const progWelcome = 'HEllO.   \nWelcome to our \n  project.';
+                const progAbout = 'About Us';
+                
+                let idx1 = 1;
+                let idx2 = 1;
+
+        
+                setInterval(writeText,150)
+
+                $ (document).ready (function (){
+                    $('#about-p').hide();
+                });
+
+                function writeText(){
+
+                    if(idx1 < 37){
+                        textWelcome.innerText =  progWelcome.slice(0, idx1);
+                        idx1++;
+                    }else if(idx1 > 36){
+                        var bounce = document.getElementById('bouncy-arrow1')
+
+                        const textAbout = document.getElementById('about-text');
+                        const progAbout = 'About Us';
+                        textAbout.innerText =  progAbout.slice(0, idx2); 
+                        console.log(progAbout.slice(0, idx2));
+                        idx2++;
+                        if(idx2 > 7){
+                            $('#about-p').fadeIn('slow');
+                            bounce.classList.add('bounce');
+                            
+                        }
+                    }
+
+                
+                }
+            </script>
+
+        </div>
+
+    </body>
+</html>
