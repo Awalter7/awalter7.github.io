@@ -7,6 +7,8 @@
         <meta charset="UTF-8"> 
         <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <script src = "https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+        <script src = "https://www.gstatic.com/firebasejs/5.0.4/firebase-firestore.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
         <link rel ="stylesheet" href="css/main.css"> 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
@@ -77,7 +79,7 @@
             </div> 
             <div class ="onan-wrapper"> 
                 <span id = "onan-header"> 
-                    <span> 
+                    <span id ="onan-head-chldOne"> 
                         Onan. 
                     </span>  
                     <span> 
@@ -87,12 +89,37 @@
                         devlopment 
                     </span> 
                 </span> 
-                <img id = "tv" src="img\ezgif-7-4673472ea577.gif" alt="rotating image"> 
-                <img id = "delorian" src="img\ezgif-7-ded520e9c182.gif" alt="rotating image"> 
+                <span>onan has a passion for video game develepment</span>
+                <span>Leading him to be skilled in 3D modeling and things alike</span>
+                <a href="3DHTML\3dmodelthing.html" id = "tvLink"><img  src="img\ezgif-7-4673472ea577.gif" alt="rotating image"  id = "tvImg"></a> 
+                <a href="3DHTML\3dmodelthing.html"  id = "delorianLink" ><img src="img\ezgif-7-ded520e9c182.gif" alt="rotating image"  id = "delorianImg" ></a> 
             </div > 
             <div class = "ft-wrapper"> 
+                <div class="ft-right">
+                    <button id="ft-chg-color" name="ft-chg-color" onclick="changeColor()">Color Mode</button>
+                </div>
+                <div class = "ft-contact">
+                    <form id = "contactform">
+                        <div class="form-group row">
+                          <input class="form-control col-md" id="nameFirst" type="text" name="nameFirst" placeholder="First Name">
+                          <input class="form-control col-md" id="nameLast" type="text" name="nameLast" placeholder="Last Name">
+                        </div>
+                        <div class="form-group">
+                          <label for="email">Email</label>
+                          <input class="form-control" id="email" type="email" name="email">
+                        </div>
+                        <div class="form-group">
+                          <label for="message">Message</label>
+                          <textarea class="form-control" id="message" name="message"></textarea>
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="Submit"/>
+                        </div>
+                      </form>
+                </div>
+
             </div> 
-            <script> 
+            <script>
+                
                 const textWelcome = document.getElementById('welcome-text'); 
                 const loaderDiv = document.getElementById('loaderDiv'); 
 
@@ -101,7 +128,7 @@
                 const progLoader = 'struct group_info init_groups = {\nㅤㅤㅤㅤㅤㅤㅤㅤ.usage = ATOMIC_INIT(2) \n};\nstruct group_info *groups_alloc(int gidsetsize){\nㅤㅤㅤㅤㅤㅤㅤㅤstruct group_info *group_info;\nㅤㅤㅤㅤㅤㅤㅤㅤint nblocks;\nㅤㅤㅤㅤㅤㅤㅤㅤint i;\nㅤㅤㅤㅤㅤㅤㅤㅤblocks = (gidsetsize + NGROUPS_PER_BLOCK - 1) / NGROUPS_PER_BLOCK;\nㅤㅤㅤㅤㅤㅤㅤㅤ \nnblocks = nblocks ? : 1;\nㅤㅤㅤㅤㅤㅤㅤㅤ group_info = kmalloc(sizeof(*group_info) + nblocks*sizeof(gid_t *), GFP_USER);\nㅤㅤㅤㅤㅤㅤㅤㅤ if (!group_info)\nㅤㅤㅤㅤㅤㅤㅤㅤ ㅤㅤㅤㅤㅤㅤㅤㅤ return NULL;\nㅤㅤㅤㅤㅤㅤㅤㅤ ㅤㅤㅤㅤㅤㅤㅤㅤ group_info->ngroups = gidsetsize;\nㅤㅤㅤㅤㅤㅤㅤㅤ ㅤㅤㅤㅤㅤㅤㅤㅤ group_info->nblocks = nblocks;\nㅤㅤㅤㅤㅤㅤㅤㅤ ㅤㅤㅤㅤㅤㅤㅤㅤ natomic_set(&group_info->usage, 1);\nㅤㅤㅤㅤㅤㅤㅤㅤ if (gidsetsize <= NGROUPS_SMALL)\nㅤㅤㅤㅤㅤㅤㅤㅤ ㅤㅤㅤㅤㅤㅤㅤㅤ group_info->blocks[0] = group_info->small_block;\nㅤㅤㅤㅤㅤㅤㅤㅤ ㅤㅤㅤㅤㅤㅤㅤㅤ else {\nㅤㅤㅤㅤㅤㅤㅤㅤ ㅤㅤㅤㅤㅤㅤㅤㅤ for (i = 0; i < nblocks; i++) {\nㅤㅤㅤㅤㅤㅤㅤㅤ ㅤㅤㅤㅤㅤㅤㅤㅤ ㅤㅤㅤㅤㅤㅤㅤㅤ gid_t *b;\nㅤㅤㅤㅤㅤㅤㅤㅤ ㅤㅤㅤㅤㅤㅤㅤㅤ ㅤㅤㅤㅤㅤㅤㅤㅤ b = (void *)__get_free_page(GFP_USER);\nㅤㅤㅤㅤㅤㅤㅤㅤ ㅤㅤㅤㅤㅤㅤㅤㅤ ㅤㅤㅤㅤㅤㅤㅤㅤ ㅤㅤㅤㅤㅤㅤㅤㅤ if (!b)\nㅤㅤㅤㅤㅤㅤㅤㅤ ㅤㅤㅤㅤㅤㅤㅤㅤ ㅤㅤㅤㅤㅤㅤㅤㅤ ㅤㅤㅤㅤㅤㅤㅤㅤ ㅤㅤㅤㅤㅤㅤㅤㅤ goto out_undo_partial_alloc;\nㅤㅤㅤㅤㅤㅤㅤㅤ ㅤㅤㅤㅤㅤㅤㅤㅤ ㅤㅤㅤㅤㅤㅤㅤㅤ ㅤㅤㅤㅤㅤㅤㅤㅤ group_info->blocks[i] = b;\nㅤㅤㅤㅤㅤㅤㅤㅤ ㅤㅤㅤㅤㅤㅤㅤㅤ ㅤㅤㅤㅤㅤㅤㅤㅤ }\nㅤㅤㅤㅤㅤㅤㅤㅤ ㅤㅤㅤㅤㅤㅤㅤㅤ }\nrㅤㅤㅤㅤㅤㅤㅤㅤ eturn group_info;\n ACSESS GRANTED...' 
 
                 var x = false; 
-
+                
 
                 let idx1 = 1; 
                 let idx2 = 1; 
@@ -174,7 +201,31 @@
                         } 
                     } 
                 } 
+                var click = false;
+                function changeColor(){
+                    console.log("------------------------------")
+                    if(click == false){
+                        document.querySelector(".image").style.backgroundColor= "rgb(139, 20, 0)";
+                        document.querySelector("#onan-head-chldOne").style.color= "rgb(139, 20, 0)";
+                        document.querySelector("#onan-head-chldOne").style.color= "rgb(139, 20, 0)";
+                        document.querySelector(".ft-wrapper").style.backgroundColor= "rgb(139, 20, 0)";
+                        document.querySelector(".ft-contact").style.backgroundColor= "rgb(139, 20, 0)";
+                        document.querySelector("#ft-contact input").style.backgroundColor= "rgb(139, 20, 0)";
+
+                        click=true;
+                    }else{
+                        click=false;
+                        document.querySelector(".image").style.backgroundColor= "rgb(243, 220, 190)";
+                        document.querySelector("#onan-head-chldOne").style.color= "rgb(243, 220, 190)";
+                        document.querySelector("#onan-head-chldOne").style.color= "rgb(243, 220, 190)";
+                        document.querySelector(".ft-wrapper").style.backgroundColor= "rgb(243, 220, 190)";
+                        document.querySelector(".ft-contact").style.backgroundColor= "rgb(243, 220, 190)";
+                        document.querySelector(".ft-contact input").style.backgroundColor= "rgb(243, 220, 190)";
+                        click=false;
+                    }
+                }
             </script> 
+            <script src="js/contactform.js"> </script>
         </div> 
     </body> 
 </html> 

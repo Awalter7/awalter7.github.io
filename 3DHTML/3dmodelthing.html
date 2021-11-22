@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>My first three.js app</title>
+		<style>
+		</style>
+	</head>
+	
+	<body>
+		<div class="main-wrapper"> 
+            <div class="noise-wrapper"> 
+               <div class="noise" id="delorianplace"> 
+               </div > 
+        </div> 
+<div>
+
+		
+		<script type="module">
+			import * as THREE from 'https://unpkg.com/three@0.126.1/build/three.module.js';
+			import { OrbitControls } from 'https://unpkg.com/three@0.126.1/examples/jsm/controls/OrbitControls.js';
+			import { GLTFLoader} from 	  'https://unpkg.com/three@0.126.1/examples/jsm/loaders/GLTFLoader.js'	;
+
+			const scene = new THREE.Scene();
+
+			const ambientLight = new THREE.AmbientLight();
+			ambientLight.intensity = 1;
+			scene.add(ambientLight);
+
+			const camera = new THREE.PerspectiveCamera(
+				75,
+				window.innerWidth / window.innerHeight,
+				0.1,
+				1000
+			);
+			camera.position.set(0.8, 1.4, 1.0);
+
+			const renderer = new THREE.WebGLRenderer({ alpha: true });
+			renderer.setSize(window.innerWidth, window.innerHeight);
+			document.getElementById("delorianplace").appendChild(renderer.domElement);
+
+			const controls = new OrbitControls(camera, renderer.domElement);
+			controls.enableDamping = true;
+			controls.target.set(0, 1, 0);
+
+			//const material = new THREE.MeshNormalMaterial()
+
+			const loader = new GLTFLoader();
+
+			// Load a glTF resource
+			loader.load(
+				// resource URL
+				'js/models/DelorianRotate.gltf',
+				// called when the resource is loaded
+				function ( gltf ) {
+
+					scene.add( gltf.scene );
+
+					gltf.animations; // Array<THREE.AnimationClip>
+					gltf.scene; // THREE.Group
+					gltf.scenes; // Array<THREE.Group>
+					gltf.cameras; // Array<THREE.Camera>
+					gltf.asset; // Object
+
+				},
+				// called while loading is progressing
+				function ( xhr ) {
+
+					console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+				},
+				// called when loading has errors
+				function ( error ) {
+
+					console.log( 'An error happened' );
+
+				}
+			);
+
+			window.addEventListener('resize', onWindowResize, false);
+			function onWindowResize() {
+				camera.aspect = window.innerWidth / window.innerHeight
+				camera.updateProjectionMatrix()
+				renderer.setSize(window.innerWidth, window.innerHeight)
+				render()
+			}
+
+
+			function animate() {
+				requestAnimationFrame(animate);
+
+				controls.update();
+
+				render();
+
+			};
+
+			function render() {
+				
+				renderer.setClearColor( 0x000000, 0 );
+				renderer.render(scene, camera);
+				
+			}
+
+			animate();
+		</script>
+	</body>
+</html>
