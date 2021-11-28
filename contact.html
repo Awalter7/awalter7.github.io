@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src = "https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+    <script src = "https://www.gstatic.com/firebasejs/5.0.4/firebase-firestore.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+    <link rel ="stylesheet" href="css/main.css"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
+
+    <title>Document</title>
+</head>
+<body onload="hideDiv()">
+
+    <div class="contact-main-wrapper"> 
+        <nav class="navbar navbar-custom fixed-top navbar-expand-lg"> 
+            <span class="navbar-text navbar-text d-none d-sm-none d-md-block d-lg-block d-xl-block"> 
+                [AIO] 
+            </span> 
+            <div class="navbar-nav ml-auto"> 
+                
+                <div class="navbar-brand"> 
+                    <a class="nav-item nav-link  brand-cont" href="index.html" data-text="USCA"><p>Home</p></a> 
+                     
+                </div> 
+                <a class="nav-link" id = "active"  href="" data-text="Contact">contact<span class="sr-only">(current)</span></a> 
+                <a class="nav-item nav-link" href="https://www.usca.edu" data-text="USCA">usca</a> 
+                <a class="nav-item nav-link " id = "nav-item-3" href="https://www.github.com/awalter7" data-text="GitHub">gitHub</a> 
+            </div> 
+        </nav> 
+        <div class = "ct-mg">
+            <button id = "ct-Link">
+                <div id = "ct">
+                    -Contact by email-
+                </div>
+            </button>
+            <button id = "mg-Link">
+                <div id = "mg">
+                    -Contact using our message board-
+                </div>
+            </button>
+        </div>
+        <div class = "contact-frm">
+            <span id = "contact-header"><span id = "ct-header-color">Contact</span> Us</span>
+            <div class = "contact">
+                <form id = "contactform">
+                    <div class="form-group row">
+                      <input class="form-control col-md" id="nameFirst" type="text" name="nameFirst" placeholder="First Name">
+                      <input class="form-control col-md" id="nameLast" type="text" name="nameLast" placeholder="Last Name">
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Email</label>
+                      <input class="form-control" id="email" type="email" name="email">
+                    </div>
+                    <div class="form-group">
+                      <label for="message">Message</label>
+                      <textarea class="form-control" id="message" name="message"></textarea>
+                    </div>
+                    <input class="btn btn-primary" type="submit" value="Submit"/>
+                    </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+    <script>
+    function hideDiv(){
+        $(".contact-frm").hide();
+    }
+    $("#ct-Link").on('click', function(){
+        $(".contact-frm").show();
+        console.log(x);
+
+    });
+
+    </script>
+
+</body>
+</html>

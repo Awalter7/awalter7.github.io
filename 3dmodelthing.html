@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>My first three.js app</title>
+		<link rel ="stylesheet" href="css/main.css"> 
+		<style>
+			body{
+				background-color: rgba(0, 0, 0, 0.753);
+				display: flex;  
+				justify-content: center;  
+				align-items: center;  
+				overflow-y: hidden;
+				overflow-x: hidden;
+			}
+			#objectplace{
+				position: relative;
+				margin-top: -8vh;
+			}
+			button{
+				background-color: black;
+				color:antiquewhite;
+				border: none;
+				height: 30px;
+				width: 100px;
+				
+			}
+			button:hover{
+				color: black;
+				background-color: antiquewhite;;
+			}
+			#buttonContainer{
+				text-align: center;  
+				height: 200px;
+				background-color: rgb(0, 0, 0);
+			}
+
+		</style>
+	</head>
+	
+	<body>
+
+		<div class="main-wrapper"> 
+
+               <div id="objectplace"> 
+				   
+			   </div >
+
+			   <div id = "buttonContainer">
+					<button id="view-bck" onclick="window.location.href='index.html'">Back</button>
+					<button id="delorian">Delorian</button>
+					<button id="tvscreen">TV Screen</button>
+					<button id="xaxis">X axis</button>
+					<button id="yaxis">Y axis</button>
+					<button id="zaxis">Z axis</button>
+					<button id="grid">Grid Floor</button>
+				</div>
+
+		<div>
+
+		
+		<script type="module">
+			import * as THREE from 'https://unpkg.com/three@0.126.1/build/three.module.js';
+			import { OrbitControls } from 'https://unpkg.com/three@0.126.1/examples/jsm/controls/OrbitControls.js';
+			import { GLTFLoader} from 	  'https://unpkg.com/three@0.126.1/examples/jsm/loaders/GLTFLoader.js'	;
+
+			const scene = new THREE.Scene();
+			var delorian = {active:false};
+			var tvscreen = {active:false};
+			var xaxis = {active:false};
+			var yaxis = {active:false};
+			var zaxis = {active:false};
+			var grid = {active:false};
+
+			document.getElementById("delorian").addEventListener("click",delorianswitch,false);
+			function delorianswitch(){
+				if(delorian["active"]){
+					scene.remove(delorian["object"]);
+					delorian["active"] = false;
+				}
+				else{
+					scene.add(delorian["object"]);
+					delorian["active"] = true;
+				}
+			}
+
+			document.getElementById("tvscreen").addEventListener("click",tvscreenswitch,false);
+			function tvscreenswitch(){
+				if(tvscreen["active"]){
+					scene.remove(tvscreen["object"]);
+					tvscreen["active"] = false;
+				}
+				else{
+					scene.add(tvscreen["object"]);
+					tvscreen["active"] = true;
+				}
+			}
+
+			document.getElementById("xaxis").addEventListener("click",xaxisswitch,false);
+			function xaxisswitch(){
+				if(xaxis["active"]){
+					scene.remove(xaxis["object"]);
+					xaxis["active"] = false;
+				}
+				else{
+					scene.add(xaxis["object"]);
+					xaxis["active"] = true;
+				}
+			}
+			document.getElementById("yaxis").addEventListener("click",yaxisswitch,false);
+			function yaxisswitch(){
+				if(yaxis["active"]){
+					scene.remove(yaxis["object"]);
+					yaxis["active"] = false;
+				}
+				else{
+					scene.add(yaxis["object"]);
+					yaxis["active"] = true;
+				}
+			}
+			document.getElementById("zaxis").addEventListener("click",zaxisswitch,false);
+			function zaxisswitch(){
+				if(zaxis["active"]){
+					scene.remove(zaxis["object"]);
+					zaxis["active"] = false;
+				}
+				else{
+					scene.add(zaxis["object"]);
+					zaxis["active"] = true;
+				}
+			}
+			document.getElementById("grid").addEventListener("click",gridswitch,false);
+			function gridswitch(){
+				if(grid["active"]){
+					scene.remove(grid["object"]);
+					grid["active"] = false;
+				}
+				else{
+					scene.add(grid["object"]);
+					grid["active"] = true;
+				}
+			}
+
+			
+
+			const ambientLight = new THREE.AmbientLight();
+			ambientLight.intensity = 1;
+			scene.add(ambientLight);
+
+			const camera = new THREE.PerspectiveCamera(
+				75,
+				window.innerWidth / window.innerHeight,
+				0.1,
+				1000
+			);
+			camera.position.set(0.8, 1.4, 1.0);
+
+			const renderer = new THREE.WebGLRenderer({ alpha: true });
+			renderer.setSize(window.innerWidth, window.innerHeight);
+			document.getElementById("objectplace").appendChild(renderer.domElement);
+
+			const controls = new OrbitControls(camera, renderer.domElement);
+			controls.enableDamping = true;
+			controls.target.set(0, 1, 0);
+
+			//const material = new THREE.MeshNormalMaterial()
+
+			const loader = new GLTFLoader();
+
+			// Load a glTF resource
+			loader.load(
+				// resource URL
+				'models/DelorianRotate.gltf',
+				// called when the resource is loaded
+				function ( gltf ) {
+					delorian["object"] = gltf.scene;
+
+					gltf.animations; // Array<THREE.AnimationClip>
+					gltf.scene; // THREE.Group
+					gltf.scenes; // Array<THREE.Group>
+					gltf.cameras; // Array<THREE.Camera>
+					gltf.asset; // Object
+
+				},
+				// called while loading is progressing
+				function ( xhr ) {
+
+					console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+				},
+				// called when loading has errors
+				function ( error ) {
+
+					console.log( 'An error happened' );
+
+				}
+			);
+
+			loader.load(
+				// resource URL
+				'models/grid.gltf',
+				// called when the resource is loaded
+				function ( gltf ) {
+
+					grid["object"] = gltf.scene;
+					
+					gltf.animations; // Array<THREE.AnimationClip>
+					gltf.scene; // THREE.Group
+					gltf.scenes; // Array<THREE.Group>
+					gltf.cameras; // Array<THREE.Camera>
+					gltf.asset; // Object
+
+				},
+				// called while loading is progressing
+				function ( xhr ) {
+
+					console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+				},
+				// called when loading has errors
+				function ( error ) {
+
+					console.log( 'An error happened' );
+
+				}
+			);
+
+			loader.load(
+				// resource URL
+				'models/xaxis.gltf',
+				// called when the resource is loaded
+				function ( gltf ) {
+
+					xaxis["object"] = gltf.scene;
+					
+					gltf.animations; // Array<THREE.AnimationClip>
+					gltf.scene; // THREE.Group
+					gltf.scenes; // Array<THREE.Group>
+					gltf.cameras; // Array<THREE.Camera>
+					gltf.asset; // Object
+
+				},
+				// called while loading is progressing
+				function ( xhr ) {
+
+					console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+				},
+				// called when loading has errors
+				function ( error ) {
+
+					console.log( 'An error happened' );
+
+				}
+			);
+
+			loader.load(
+				// resource URL
+				'models/yaxis.gltf',
+				// called when the resource is loaded
+				function ( gltf ) {
+
+					yaxis["object"] = gltf.scene;
+					
+					gltf.animations; // Array<THREE.AnimationClip>
+					gltf.scene; // THREE.Group
+					gltf.scenes; // Array<THREE.Group>
+					gltf.cameras; // Array<THREE.Camera>
+					gltf.asset; // Object
+
+				},
+				// called while loading is progressing
+				function ( xhr ) {
+
+					console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+				},
+				// called when loading has errors
+				function ( error ) {
+
+					console.log( 'An error happened' );
+
+				}
+			);
+
+			loader.load(
+				// resource URL
+				'models/zaxis.gltf',
+				// called when the resource is loaded
+				function ( gltf ) {
+
+					zaxis["object"] = gltf.scene;
+					
+					gltf.animations; // Array<THREE.AnimationClip>
+					gltf.scene; // THREE.Group
+					gltf.scenes; // Array<THREE.Group>
+					gltf.cameras; // Array<THREE.Camera>
+					gltf.asset; // Object
+
+				},
+				// called while loading is progressing
+				function ( xhr ) {
+
+					console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+				},
+				// called when loading has errors
+				function ( error ) {
+
+					console.log( 'An error happened' );
+
+				}
+			);
+
+			loader.load(
+				// resource URL
+				'models/tvscreen.gltf',
+				// called when the resource is loaded
+				function ( gltf ) {
+
+					tvscreen["object"] = gltf.scene;
+					
+					gltf.animations; // Array<THREE.AnimationClip>
+					gltf.scene; // THREE.Group
+					gltf.scenes; // Array<THREE.Group>
+					gltf.cameras; // Array<THREE.Camera>
+					gltf.asset; // Object
+
+				},
+				// called while loading is progressing
+				function ( xhr ) {
+
+					console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+				},
+				// called when loading has errors
+				function ( error ) {
+
+					console.log( 'An error happened' );
+
+				}
+			);
+
+			window.addEventListener('resize', onWindowResize, false);
+			function onWindowResize() {
+				camera.aspect = window.innerWidth / window.innerHeight
+				camera.updateProjectionMatrix()
+				renderer.setSize(window.innerWidth, window.innerHeight)
+				render()
+			}
+
+
+			function animate() {
+				requestAnimationFrame(animate);
+
+				controls.update();
+
+				render();
+
+			};
+
+			function render() {
+				
+				renderer.setClearColor( 0x000000, 0 );
+				renderer.render(scene, camera);
+				
+			}
+
+			animate();
+		</script>
+	</body>
+</html>

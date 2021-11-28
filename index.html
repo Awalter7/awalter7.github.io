@@ -16,70 +16,54 @@
         <script src="js/main.js"></script> 
         <title>Document</title> 
         <style>
-        .image { 
-            position: absolute; 
-            content:url("img/HD-Wallpaper-Dark-Aesthetic.png"); 
-            width: 95%; 
-            top:1000px; 
-            height: 100px; 
-            padding: 2px; 
-            margin-left: 40px; 
-            background-color: rgba(243, 220, 190, 0.925); 
-        }  
         </style> 
     </head> 
     <body> 
         <div class = "pg-loader" id="loaderDiv"> 
-
+            <span id = "cp-1">Coding possibility</span>
+            <span id = "cp-2">Coding possibility</span>
+            <span id = "cp-3">Coding possibility</span>
+            <span id = "cp-4">Coding possibility</span>
+            <span id = "cp-5">Coding possibility</span>
+            <span id = "cp-6">Coding possibility</span>
         </div> 
-
-
-        <div class="main-wrapper"> 
-            <div class="noise-wrapper"> 
-            <div class="noise"> 
-            </div> 
-            </div> 
+        <div class="main-wrapper">
+            <div class="noise-wrapper">
+            <div class="noise">
+            </div>
+            </div>
             <nav class="navbar navbar-custom fixed-top navbar-expand-lg"> 
-                <span class="navbar-text navbar-text d-none d-sm-none d-md-none d-lg-none d-xl-block"> 
+                <span class="navbar-text navbar-text d-none d-sm-none d-md-block d-lg-block d-xl-block"> 
                     [AIO] 
                 </span> 
                 <div class="navbar-nav ml-auto"> 
-                    <div class="navbar-brand"> 
+                    <div class="navbar-brand" id = "active"> 
                         Home 
                     </div> 
-                    <a class="nav-item nav-link nav-link " href="ContactMe.html" data-text="Contact">contact<span class="sr-only">(current)</span></a> 
+                    <a class="nav-item nav-link nav-link " href="contact.html" data-text="Contact">contact<span class="sr-only">(current)</span></a> 
                     <a class="nav-item nav-link nav-link " href="https://www.usca.edu" data-text="USCA">usca</a> 
                     <a class="nav-item nav-link nav-link " id = "nav-item-3" href="https://www.github.com/awalter7" data-text="GitHub">gitHub</a> 
                 </div> 
             </nav> 
-            <h1 id = "welcome-text">Starting...</h1> 
-            <div id = "lrg-active-wraper"> 
-                <div id = "active-wraper"> 
-                    <svg id = "bouncy-arrow1" class = "arrow" width="53px" height="53px" viewBox="0 0 53 53" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
-                        <g id="arrow-wrap" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> 
-                            <g id="arrow" class="path" transform="translate(-904.000000, -343.000000)" stroke="#FFFFFF" stroke-width="2"> 
-                                <path d="M912.545285,345 L946.743,379.198 L946.74357,345.246688 L956,345.246688 L956,395 L906.246688,395 L906.246688,385.74357 L940.198,385.743 L906,351.545285 L912.545285,345 Z" id="wrap-arrow1a"></path> 
+            <div class = "tp-wrapper"> 
+                <h1 id = "welcome-text">Starting...</h1> 
+                <div class = "lrg-active-wraper"> 
+                    <div id = "active-wraper"> 
+                        <svg id = "bouncy-arrow1" class = "arrow" width="53px" height="53px" viewBox="0 0 53 53" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
+                            <g id="arrow-wrap" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> 
+                                <g id="arrow" class="path" transform="translate(-904.000000, -343.000000)" stroke="#FFFFFF" stroke-width="2"> 
+                                    <path d="M912.545285,345 L946.743,379.198 L946.74357,345.246688 L956,345.246688 L956,395 L906.246688,395 L906.246688,385.74357 L940.198,385.743 L906,351.545285 L912.545285,345 Z" id="wrap-arrow1a"></path> 
+                                </g> 
                             </g> 
-                        </g> 
-                    </svg> 
-                    <h2 id = "about-text"></h2> 
-                </div> 
-                <div id = "about-p"><p>Our group is comprised of creative individuals who have found a passion in computer sience. While some of our members find greater abuilities in other sectors of the proggraming vurse, we have come together to demenstrate what the collaberation of those skills can do</p></div> 
-            </div>  
-            <div class = "rotate"> 
-                <svg id = "bouncy-arrow2" class = "arrow" width="53px" height="53px" viewBox="0 0 53 53" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
-                    <g id="arrow-wrap" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> 
-                        <g id="arrow" class="path" transform="translate(-904.000000, -343.000000)" stroke="#FFFFFF" stroke-width="2"> 
-                            <path d="M912.545285,345 L946.743,379.198 L946.74357,345.246688 L956,345.246688 L956,395 L906.246688,395 L906.246688,385.74357 L940.198,385.743 L906,351.545285 L912.545285,345 Z" id="wrap-arrow1a"></path> 
-                        </g> 
-                    </g> 
-                </svg> 
-            </div> 
-            <div class="image"> 
-            </div> 
+                        </svg> 
+                        <h2 id = "about-text"></h2> 
+                    </div> 
+                    <div id = "about-p"><p>Our group is comprised of creative individuals who have found a passion in computer sience. While some of our members find greater abuilities in other sectors of the proggraming vurse, we have come together to demenstrate what the collaberation of those skills can do</p></div> 
+                </div>  
+            </div>
             <div class ="onan-wrapper"> 
                 <span id = "onan-header"> 
-                    <span id ="onan-head-chldOne"> 
+                    <span id = "clr-onan"> 
                         Onan. 
                     </span>  
                     <span> 
@@ -89,37 +73,126 @@
                         devlopment 
                     </span> 
                 </span> 
-                <span>onan has a passion for video game develepment</span>
-                <span>Leading him to be skilled in 3D modeling and things alike</span>
-                <a href="3DHTML\3dmodelthing.html" id = "tvLink"><img  src="img\ezgif-7-4673472ea577.gif" alt="rotating image"  id = "tvImg"></a> 
-                <a href="3DHTML\3dmodelthing.html"  id = "delorianLink" ><img src="img\ezgif-7-ded520e9c182.gif" alt="rotating image"  id = "delorianImg" ></a> 
-            </div > 
+                <span class = "img-text1">onan has a passion for video game develepment shown with great experience</span>
+                <span class = "img-text2">Leading him to be skilled in 3D modeling and all things alike</span>
+                <a href="3dmodelthing.html" id = "tvLink" >                
+                    <img  src="img\tv.gif" alt="rotating image"  id = "tvImg">
+                </a> 
+                <div class = box-1></div>
+                <div class = box-2></div>
+                <a href="3dmodelthing.html"  id = "delorianLink" > 
+                    <img src="img\delorian.gif" alt="rotating image"  id = "delorianImg" >
+                </a>
+                <div class = "circle">
+                    <p>
+                        Click the image to see model
+                    </p>
+                </div>
+            </div> 
+            <div class= "austin-wrapper">
+                <span class = "img-text3">Austin has found a passion in web development. Especially for Css.</span>
+                <span class = "img-text4">Creating most of the Css included own this Web site. </span>
+                <span id = "austin-header">
+                    <span id = "clr-austin">
+                        Austin
+                    </span>
+                    <span>
+                        Web
+                    </span>
+                    <span>
+                        develepment
+                    </span>
+                </span>
+                <div class = "tri-sphere">
+                    <div id = "tri-1"> 
+                        Y
+                        <div id = "tri-1-1">
+
+                        </div>
+                        <div id = "tri-1-2">
+
+                        </div>
+                        <div id = "tri-1-3">
+
+                        </div>
+                        <div id = "tri-1-4">
+
+                        </div>
+                    </div>
+                    <div id = "tri-2">
+                        <span id = "x">X</span>
+                        <div id = "tri-2-1">
+
+                        </div>
+                        <div id = "tri-2-2">
+
+                        </div>
+                        <div id = "tri-2-3">
+
+                        </div>
+                        <div id = "tri-2-4">
+
+                        </div>
+                    </div>
+                </div>
+                <div class = "rt-img-wrap">
+                    <div class = "rotate-image">
+                        <span style = "--i:1;">C</span>
+                        <span style = "--i:2;">l</span>
+                        <span style = "--i:3;">i</span>
+                        <span style = "--i:4;">c</span>
+                        <span style = "--i:5;">k</span>
+                        <span style = "--i:6;">|</span>
+                        <span style = "--i:7;">M</span>
+                        <span style = "--i:8;">e</span>
+                        <span style = "--i:9;">|</span>
+                        <span style = "--i:10;">|</span>
+                        <span style = "--i:11;">C</span>
+                        <span style = "--i:12;">l</span>
+                        <span style = "--i:13;">i</span>
+                        <span style = "--i:14;">c</span>
+                        <span style = "--i:15;">k</span>
+                        <span style = "--i:16;">|</span>
+                        <span style = "--i:17;">|</span>
+                        <span style = "--i:18;">M</span>
+                        <span style = "--i:19;">e</span>
+                        <span style = "--i:20;">|</span>
+                        <span style = "--i:21;">|</span>
+                        <span style = "--i:22;">C</span>
+                        <span style = "--i:23;">l</span>
+                        <span style = "--i:24;">i</span>
+                        <span style = "--i:25;">c</span>
+                        <span style = "--i:26;">k</span>
+                        <span style = "--i:27;">|</span>
+                        <span style = "--i:28;">M</span>
+                        <span style = "--i:29;">e</span>
+                        <span style = "--i:30;">|</span>
+                    </div>
+                </div >
+            </div>
             <div class = "ft-wrapper"> 
+                <div class = "ft-center">
+                    <span id = "ft-about">About Us</span>
+                    <p id = "ft-about-p">
+                        Our group is comprised of creative individuals who have found a passion in computer programming. 
+                        While some of our members find greater abuilities in other sectors of the proggraming vurse, 
+                        we have come together to demenstrate what the collaberation of those skills can do
+                    </p>
+                    <span id = "ft-contact">
+                        <span ><a href="contact.html" id = "ft-contact-wd">Contact</a></span> us. we are always looking for new projects
+                    </span>
+                    <img id = "ft-img" src="img\100-1008343_black-and-white-social-media-icon-png-clipart.png" alt="">
+                </div>
                 <div class="ft-right">
+                    <span id = "ft-right-header">Quick Actions</span>
                     <button id="ft-chg-color" name="ft-chg-color" onclick="changeColor()">Color Mode</button>
+                    <button id="ft-3dModel" name="ft-3dModel" onclick="window.location.href='3dmodelthing.html';">View Models</button>
                 </div>
-                <div class = "ft-contact">
-                    <form id = "contactform">
-                        <div class="form-group row">
-                          <input class="form-control col-md" id="nameFirst" type="text" name="nameFirst" placeholder="First Name">
-                          <input class="form-control col-md" id="nameLast" type="text" name="nameLast" placeholder="Last Name">
-                        </div>
-                        <div class="form-group">
-                          <label for="email">Email</label>
-                          <input class="form-control" id="email" type="email" name="email">
-                        </div>
-                        <div class="form-group">
-                          <label for="message">Message</label>
-                          <textarea class="form-control" id="message" name="message"></textarea>
-                        </div>
-                        <input class="btn btn-primary" type="submit" value="Submit"/>
-                        </div>
-                      </form>
-                </div>
+
 
             </div> 
             <script>
-                
+
                 const textWelcome = document.getElementById('welcome-text'); 
                 const loaderDiv = document.getElementById('loaderDiv'); 
 
@@ -135,7 +208,7 @@
                 let idx3 = 1; 
 
  
-                var headerIdx = setInterval(writeText,150); 
+                var headerIdx = null; 
                 var loaderIdx = null;
  
  
@@ -143,25 +216,51 @@
                 window.addEventListener("load", function onLoad(){ 
                     $('.navbar').hide(); 
 
-                    var loaderIdx = setInterval(loader,1); 
+                    loaderIdx = setInterval(loader,1); 
 
                 }); 
 
                 function loader(){ 
-                    loaderDiv.innerText =  progLoader.slice(0, idx3); 
-                    console.log(progLoader.slice(0, idx3) + " ") 
+                    if(idx3 == 30){
+                        document.getElementById("cp-6").style.color = "red";
+                    }else if(idx3 == 60){
+                        document.getElementById("cp-5").style.color = "red";
+                    }else if(idx3 == 90){
+                        document.getElementById("cp-4").style.color = "red";
+    	            }else if(idx3 == 120){
+                        document.getElementById("cp-3").style.color = "red";
+                    }else if(idx3 == 150){
+                        document.getElementById("cp-2").style.color = "red";
+                    }else if(idx3 == 180){
+                        document.getElementById("cp-1").style.color = "red";
+                        document.getElementById("cp-6").style.color = "#f3dcbe";
+                    }
+                    else if(idx3 == 210){
+                        document.getElementById("cp-5").style.color = "#f3dcbe";
+                    }
+                    else if(idx3 == 240){
+                        document.getElementById("cp-4").style.color = "#f3dcbe";
+                    }
+                    else if(idx3 == 270){
+                        document.getElementById("cp-3").style.color = "#f3dcbe";
+                    }
+                    else if(idx3 == 300){
+                        document.getElementById("cp-2").style.color = "#f3dcbe";
+                    }
+                    else if(idx3 == 330){
+                        document.getElementById("cp-1").style.color = "#f3dcbe";
+                    }
+                    
                     idx3++; 
-                    if(idx3 == 1000){
-                        console.log(" ---------------------------------------");
-                        $('.access').show(); 
-                    }else if(idx3 >= 1500){ 
+                    if(idx3 >= 350){ 
                         x = true; 
 
-                        $('.pg-loader').fadeOut('slow') 
-                        if(idx3 == 1500){  
+                        $('.pg-loader').slideUp('slow') 
+                        if(idx3 == 350){  
                             $('.navbar').show(); 
                             $('.access').hide(); 
                             clearInterval(loaderIdx);
+                            headerIdx = setInterval(writeText,150); 
                         } 
                     } 
                 } 
@@ -181,12 +280,10 @@
 
                         }else if(idx1 > 36){ 
                             var bounce1 = document.getElementById('bouncy-arrow1') 
-                            var bounce2 = document.getElementById('bouncy-arrow2') 
 
                             const textAbout = document.getElementById('about-text'); 
                             const progAbout = 'About Us'; 
                             textAbout.innerText =  progAbout.slice(0, idx2);  
-                            console.log(progAbout.slice(0, idx2)); 
                             idx2++; 
                             if(idx2 > 7){ 
                                 $('#about-p').fadeIn('slow'); 
@@ -194,36 +291,58 @@
 
                                 if(idx2 == 15){ 
                                     $('#bouncy-arrow2').fadeIn('slow'); 
-                                    bounce2.classList.add('bounceA2'); 
-
+                                    clearInterval(headerIdx);
                                 } 
                             } 
                         } 
                     } 
-                } 
+                    var moveForce = 30; // max popup movement in pixels
+                    var rotateForce = 20; // max popup rotation in deg
+
+                    $(document).mousemove(function(e) {
+                        var docX = $(document).width();
+                        var docY = $(document).height();
+                        
+                        var moveX = (e.pageX - docX/2) / (docX/2) * -moveForce;
+                        var moveY = (e.pageY - docY/2) / (docY/2) * -moveForce;
+                        
+                        var rotateY = (e.pageX / docX * rotateForce*2) - rotateForce;
+                        var rotateX = -((e.pageY / docY * rotateForce*2) - rotateForce);
+                        
+                        $('#imgTv')
+                            .css('left', moveX+'px')
+                            .css('top', moveY+'px')
+                            .css('transform', 'rotateX('+rotateX+'deg) rotateY('+rotateY+'deg)');
+                    });
+                                    } 
                 var click = false;
                 function changeColor(){
-                    console.log("------------------------------")
                     if(click == false){
-                        document.querySelector(".image").style.backgroundColor= "rgb(139, 20, 0)";
-                        document.querySelector("#onan-head-chldOne").style.color= "rgb(139, 20, 0)";
-                        document.querySelector("#onan-head-chldOne").style.color= "rgb(139, 20, 0)";
+                        document.querySelector("#ft-chg-color").style.backgroundColor= "rgb(139, 20, 0)";
+                        document.querySelector("#ft-3dModel").style.backgroundColor= "rgb(139, 20, 0)";
+                        document.querySelector("#clr-onan").style.color= "rgb(139, 20, 0)";
                         document.querySelector(".ft-wrapper").style.backgroundColor= "rgb(139, 20, 0)";
-                        document.querySelector(".ft-contact").style.backgroundColor= "rgb(139, 20, 0)";
-                        document.querySelector("#ft-contact input").style.backgroundColor= "rgb(139, 20, 0)";
-
+                        document.querySelector("#clr-austin").style.color= "rgb(139, 20, 0)";
+                        document.querySelector("#about-p").style.borderColor= "rgb(139, 20, 0)";
+                        document.querySelector("#active-wraper").style.borderColor= "rgb(139, 20, 0)";
+                        document.querySelector("#active").style.color= "rgb(139, 20, 0)";
+                        document.querySelector(".navbar-text").style.color= "rgb(139, 20, 0)";
                         click=true;
                     }else{
                         click=false;
-                        document.querySelector(".image").style.backgroundColor= "rgb(243, 220, 190)";
-                        document.querySelector("#onan-head-chldOne").style.color= "rgb(243, 220, 190)";
-                        document.querySelector("#onan-head-chldOne").style.color= "rgb(243, 220, 190)";
+                        document.querySelector("#ft-chg-color").style.backgroundColor= "rgb(243, 220, 190)";
+                        document.querySelector("#ft-3dModel").style.backgroundColor= "rgb(243, 220, 190)";
+                        document.querySelector("#clr-onan").style.color= "rgb(243, 220, 190)";
+                        document.querySelector("#clr-austin").style.color= "rgb(243, 220, 190)";
                         document.querySelector(".ft-wrapper").style.backgroundColor= "rgb(243, 220, 190)";
-                        document.querySelector(".ft-contact").style.backgroundColor= "rgb(243, 220, 190)";
-                        document.querySelector(".ft-contact input").style.backgroundColor= "rgb(243, 220, 190)";
+                        document.querySelector("#about-p").style.borderColor= "rgb(243, 220, 190)";
+                        document.querySelector("#active-wraper").style.borderColor= "rgb(243, 220, 190)";
+                        document.querySelector("#active").style.color= "rgb(243, 220, 190)";
+                        document.querySelector(".navbar-text").style.color= "rgb(243, 220, 190)";
                         click=false;
                     }
                 }
+
             </script> 
             <script src="js/contactform.js"> </script>
         </div> 
