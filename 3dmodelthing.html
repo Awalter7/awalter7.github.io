@@ -3,60 +3,29 @@
 	<head>
 		<meta charset="utf-8">
 		<title>My first three.js app</title>
-		<link rel ="stylesheet" href="css/main.css"> 
 		<style>
-			body{
-				background-color: rgba(0, 0, 0, 0.753);
-				display: flex;  
-				justify-content: center;  
-				align-items: center;  
-				overflow-y: hidden;
-				overflow-x: hidden;
+			.noise{
+				background-image: url("img/static-glitch.gif");
 			}
-			#objectplace{
-				position: relative;
-				margin-top: -8vh;
-			}
-			button{
-				background-color: black;
-				color:antiquewhite;
-				border: none;
-				height: 30px;
-				width: 100px;
-				
-			}
-			button:hover{
-				color: black;
-				background-color: antiquewhite;;
-			}
-			#buttonContainer{
-				text-align: center;  
-				height: 200px;
-				background-color: rgb(0, 0, 0);
-			}
-
 		</style>
 	</head>
 	
 	<body>
-
 		<div class="main-wrapper"> 
+            <div class="noise-wrapper"> 
+               <div class="noise" id="objectplace"> 
 
-               <div id="objectplace"> 
-				   
-			   </div >
-
-			   <div id = "buttonContainer">
-					<button id="view-bck" onclick="window.location.href='index.html'">Back</button>
-					<button id="delorian">Delorian</button>
-					<button id="tvscreen">TV Screen</button>
-					<button id="xaxis">X axis</button>
-					<button id="yaxis">Y axis</button>
-					<button id="zaxis">Z axis</button>
-					<button id="grid">Grid Floor</button>
-				</div>
-
-		<div>
+               </div >
+			   <button id="delorian">Delorian</button>
+			   <button id="tvscreen">TV Screen</button>
+			   <button id="xaxis">X axis</button>
+			   <button id="yaxis">Y axis</button>
+			   <button id="zaxis">Z axis</button>
+			   <button id="grid">Grid Floor</button>
+			   <button id="makegreen">Make the model green...</button>
+			   <button id="makewireframe">Make the model wireframe...</button>
+        </div> 
+<div>
 
 		
 		<script type="module">
@@ -65,12 +34,41 @@
 			import { GLTFLoader} from 	  'https://unpkg.com/three@0.126.1/examples/jsm/loaders/GLTFLoader.js'	;
 
 			const scene = new THREE.Scene();
-			var delorian = {active:false};
-			var tvscreen = {active:false};
-			var xaxis = {active:false};
-			var yaxis = {active:false};
-			var zaxis = {active:false};
-			var grid = {active:false};
+			var delorian = {active:false,green:false};
+			var tvscreen = {active:false,green:false};
+			var xaxis = {active:false,green:false};
+			var yaxis = {active:false,green:false};
+			var zaxis = {active:false,green:false};
+			var grid = {active:false,green:false};
+			var isgreen = false;
+			document.getElementById("makegreen").addEventListener("click",makegreen,false);
+			function makegreen(){
+				if(isgreen){
+					scene.overrideMaterial = null; 
+					isgreen = false;
+				}
+				else{
+					scene.overrideMaterial = new THREE.MeshStandardMaterial();
+					scene.overrideMaterial.map = new THREE.TextureLoader().load( "js/models/green.png" );
+					
+					isgreen = true;
+				}
+			}
+			var iswireframe = false;
+			document.getElementById("makewireframe").addEventListener("click",makewireframe,false);
+			function makewireframe(){
+				if(iswireframe){
+					scene.overrideMaterial = null; 
+					iswireframe = false;
+				}
+				else{
+					scene.overrideMaterial = new THREE.MeshStandardMaterial();
+					scene.overrideMaterial.map = new THREE.TextureLoader().load( "js/models/transparent.jpg" );
+					scene.overrideMaterial.wireframe = true;
+					
+					iswireframe = true;
+				}
+			}
 
 			document.getElementById("delorian").addEventListener("click",delorianswitch,false);
 			function delorianswitch(){
@@ -147,6 +145,20 @@
 			ambientLight.intensity = 1;
 			scene.add(ambientLight);
 
+			const spotLight = new THREE.SpotLight( 0xffffff );
+			spotLight.position.set( 100, 1000, 100 );
+
+			spotLight.castShadow = true;
+
+			spotLight.shadow.mapSize.width = 1024;
+			spotLight.shadow.mapSize.height = 1024;
+
+			spotLight.shadow.camera.near = 500;
+			spotLight.shadow.camera.far = 4000;
+			spotLight.shadow.camera.fov = 30;
+
+			scene.add( spotLight );
+
 			const camera = new THREE.PerspectiveCamera(
 				75,
 				window.innerWidth / window.innerHeight,
@@ -170,7 +182,7 @@
 			// Load a glTF resource
 			loader.load(
 				// resource URL
-				'models/DelorianRotate.gltf',
+				'js/models/delorian.gltf',
 				// called when the resource is loaded
 				function ( gltf ) {
 					delorian["object"] = gltf.scene;
@@ -198,7 +210,7 @@
 
 			loader.load(
 				// resource URL
-				'models/grid.gltf',
+				'js/models/grid.gltf',
 				// called when the resource is loaded
 				function ( gltf ) {
 
@@ -227,7 +239,7 @@
 
 			loader.load(
 				// resource URL
-				'models/xaxis.gltf',
+				'js/models/xaxis.gltf',
 				// called when the resource is loaded
 				function ( gltf ) {
 
@@ -256,7 +268,7 @@
 
 			loader.load(
 				// resource URL
-				'models/yaxis.gltf',
+				'js/models/yaxis.gltf',
 				// called when the resource is loaded
 				function ( gltf ) {
 
@@ -285,7 +297,7 @@
 
 			loader.load(
 				// resource URL
-				'models/zaxis.gltf',
+				'js/models/zaxis.gltf',
 				// called when the resource is loaded
 				function ( gltf ) {
 
@@ -314,7 +326,7 @@
 
 			loader.load(
 				// resource URL
-				'models/tvscreen.gltf',
+				'js/models/tvscreen.gltf',
 				// called when the resource is loaded
 				function ( gltf ) {
 
