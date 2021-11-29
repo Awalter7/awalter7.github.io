@@ -6,12 +6,15 @@
 		<link rel ="stylesheet" href="css/main.css"> 
 		<style>
 			body{
-				background-color: rgba(0, 0, 0, 0.753);
+				background-color: rgb(255, 255, 255);
 				display: flex;  
 				justify-content: center;  
 				align-items: center;  
 				overflow-y: hidden;
 				overflow-x: hidden;
+			}
+			.main-wrapper{
+				background-color: white;
 			}
 			#objectplace{
 				position: relative;
@@ -54,6 +57,8 @@
 					<button id="yaxis">Y axis</button>
 					<button id="zaxis">Z axis</button>
 					<button id="grid">Grid Floor</button>
+					<button id="makegreen">Make the model green...</button>
+					<button id="makewireframe">Make the model wireframe...</button>
 				</div>
 
 		<div>
@@ -71,7 +76,35 @@
 			var yaxis = {active:false};
 			var zaxis = {active:false};
 			var grid = {active:false};
-
+			var isgreen = false;
+			document.getElementById("makegreen").addEventListener("click",makegreen,false);
+			function makegreen(){
+				if(isgreen){
+					scene.overrideMaterial = null; 
+					isgreen = false;
+				}
+				else{
+					scene.overrideMaterial = new THREE.MeshStandardMaterial();
+					scene.overrideMaterial.map = new THREE.TextureLoader().load( "models/green.png" );
+					
+					isgreen = true;
+				}
+			}
+			var iswireframe = false;
+			document.getElementById("makewireframe").addEventListener("click",makewireframe,false);
+			function makewireframe(){
+				if(iswireframe){
+					scene.overrideMaterial = null; 
+					iswireframe = false;
+				}
+				else{
+					scene.overrideMaterial = new THREE.MeshStandardMaterial();
+					scene.overrideMaterial.map = new THREE.TextureLoader().load( "models/transparent.jpg" );
+					scene.overrideMaterial.wireframe = true;
+					
+					iswireframe = true;
+				}
+			}
 			document.getElementById("delorian").addEventListener("click",delorianswitch,false);
 			function delorianswitch(){
 				if(delorian["active"]){
@@ -146,6 +179,20 @@
 			const ambientLight = new THREE.AmbientLight();
 			ambientLight.intensity = 1;
 			scene.add(ambientLight);
+
+			const spotLight = new THREE.SpotLight( 0xffffff );
+			spotLight.position.set( 100, 1000, 100 );
+
+			spotLight.castShadow = true;
+
+			spotLight.shadow.mapSize.width = 1024;
+			spotLight.shadow.mapSize.height = 1024;
+
+			spotLight.shadow.camera.near = 500;
+			spotLight.shadow.camera.far = 4000;
+			spotLight.shadow.camera.fov = 30;
+
+			scene.add( spotLight );
 
 			const camera = new THREE.PerspectiveCamera(
 				75,
