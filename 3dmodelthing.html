@@ -4,9 +4,6 @@
 		<meta charset="utf-8">
 		<title>My first three.js app</title>
 		<style>
-			.noise{
-				background-image: url("img/static-glitch.gif");
-			}
 		</style>
 	</head>
 	
@@ -24,14 +21,22 @@
 			   <button id="grid">Grid Floor</button>
 			   <button id="makegreen">Make the model green...</button>
 			   <button id="makewireframe">Make the model wireframe...</button>
-        </div> 
-<div>
+        	</div> 
+		<div>
 
 		
 		<script type="module">
 			import * as THREE from 'https://unpkg.com/three@0.126.1/build/three.module.js';
 			import { OrbitControls } from 'https://unpkg.com/three@0.126.1/examples/jsm/controls/OrbitControls.js';
 			import { GLTFLoader} from 	  'https://unpkg.com/three@0.126.1/examples/jsm/loaders/GLTFLoader.js'	;
+
+			var mixer;
+			var clips;
+			var twerk;
+			var opendoorr;
+			var opendoorl;
+			
+
 
 			const scene = new THREE.Scene();
 			var delorian = {active:false,green:false};
@@ -192,7 +197,20 @@
 					gltf.scenes; // Array<THREE.Group>
 					gltf.cameras; // Array<THREE.Camera>
 					gltf.asset; // Object
-
+					mixer = new THREE.AnimationMixer(gltf.scene);
+					clips = gltf.animations;
+					
+						// Play a specific animation
+					var clip = THREE.AnimationClip.findByName( clips, 'opendoorl' );
+					opendoorl = mixer.clipAction( clip );
+					opendoorl.clampWhenFinished = true;
+					opendoorl.setLoop(THREE.LoopPingPong,Infinity);
+					clip = THREE.AnimationClip.findByName(clips, "twerk");
+					twerk = mixer.clipAction(clip);
+					clip = THREE.AnimationClip.findByName(clips,"opendoorr");
+					opendoorr = mixer.clipAction(clip);
+					opendoorr.clampWhenFinished = true;
+					opendoorr.setLoop(THREE.LoopPingPong,Infinity);
 				},
 				// called while loading is progressing
 				function ( xhr ) {
@@ -360,16 +378,53 @@
 				renderer.setSize(window.innerWidth, window.innerHeight)
 				render()
 			}
-
+			var clock = new THREE.Clock();
+			var speed = 2; //units a second
+			var delta = 0;
 
 			function animate() {
 				requestAnimationFrame(animate);
-
+				delta = clock.getDelta();
 				controls.update();
-
+				mixer.update( delta );
 				render();
-
+				
 			};
+
+			
+			const raycaster = new THREE.Raycaster();
+			const mouse = new THREE.Vector2();
+
+			function clickedmouse( event ) {
+				
+				// calculate mouse position in normalized device coordinates
+				// (-1 to +1) for both components
+
+				mouse.x = ( event.clientX / document.getElementById("objectplace").innerWidth ) * 2 - 1;
+				mouse.y = - ( event.clientY / document.getElementById("objectplace").innerHeight ) * 2 + 1;
+				
+				
+				raycaster.setFromCamera( mouse, camera );
+
+				// calculate objects intersecting the picking ray
+				const intersects = raycaster.intersectObjects( scene.children );
+				console.log("clicked!");
+				if(intersects.length > 0){
+					console.log("clicked!2");
+					
+				}
+
+				if(event.which == 2){
+					twerk.reset();
+					twerk.play();
+				}
+				opendoorl.reset();
+				opendoorr.reset();
+				opendoorl.play();
+				opendoorr.play();
+			}
+			
+			window.addEventListener( 'mousedown', clickedmouse, false );
 
 			function render() {
 				
