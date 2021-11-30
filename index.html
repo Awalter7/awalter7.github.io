@@ -62,7 +62,7 @@
                 </div>  
             </div>
             <div class ="onan-wrapper"> 
-                <span id = "onan-header"> 
+                <span id = "member-header2"> 
                     <span id = "clr-onan"> 
                         Onan. 
                     </span>  
@@ -92,7 +92,7 @@
             <div class= "austin-wrapper">
                 <span class = "img-text3">Austin has found a passion in web development. Especially for Css.</span>
                 <span class = "img-text4">Creating most of the Css included own this Web site. </span>
-                <span id = "austin-header">
+                <span id = "member-header1">
                     <span id = "clr-austin">
                         Austin
                     </span>
@@ -105,7 +105,7 @@
                 </span>
                 <div class = "tri-sphere">
                     <div id = "tri-1"> 
-                        testing
+                        <p>testing testing testing testing testing testingtesting testing testing testing testingtesting testing testing testing testing testing testing testing testing </p>
                         <div id = "tri-1-1">
 
                         </div>
@@ -172,25 +172,44 @@
             </div>
             <div class = "ft-wrapper"> 
                 <div class = "ft-center">
-                    <span id = "ft-about">About Us</span>
-                    <p id = "ft-about-p">
-                        Our group is comprised of creative individuals who have found a passion in computer programming. 
-                        While some of our members find greater abuilities in other sectors of the proggraming vurse, 
-                        we have come together to demenstrate what the collaberation of those skills can do
-                    </p>
-                    <span id = "ft-contact">
-                        <span ><a href="contact.html" id = "ft-contact-wd">Contact</a></span> us. we are always looking for new projects
-                    </span>
-                    <img id = "ft-img" src="img\100-1008343_black-and-white-social-media-icon-png-clipart.png" alt="">
+                    <h1 id = "ft-about">About Us</h1>
+                    <div id = "ft-right-content">
+                        <p>
+                            Our group is comprised of creative individuals who have found a passion in computer programming. 
+                            While some of our members find greater abuilities in other sectors of the proggraming vurse, 
+                            we have come together to demenstrate what the collaberation of those skills can do
+                        </p>
+                        <span id = "ft-contact">
+                            <span ><a href="contact.html" id = "ft-contact-wd">Contact</a></span> us. we are always looking for new projects
+                        </span>
+                        <img id = "ft-img" src="img\100-1008343_black-and-white-social-media-icon-png-clipart.png" alt="">
+                    </div>
                 </div>
                 <div class="ft-right">
-                    <span id = "ft-right-header">Quick Actions</span>
-                    <button id="ft-chg-color" name="ft-chg-color" onclick="changeColor()">Color Mode</button>
-                    <button id="ft-3dModel" name="ft-3dModel" onclick="window.location.href='3dmodelthing.html';">View Models</button>
+                    <h1 id = "ft-right-header">Quick Actions</h1>
+                    <div id = "ft-right-content">
+                        <button id="ft-chg-color" name="ft-chg-color" onclick="changeColor()">Color Mode</button>
+                        <br>
+                        <button id="ft-3dModel" name="ft-3dModel" onclick="window.location.href='3dmodelthing.html';">View Models</button>
+                    </div>
+                </div>
+                <div class="ft-left">
+                    <h1>Email</h1>
+                    <div id = "ft-left-content">
+                        <span>Austin: aawalter@usca.edu</span>
+                        <br>
+                        <br>
+                        <span>Onan: </span>
+                        <br>
+                        <br>
+                        <span>Izzy: </span>
+                    </div>  
                 </div>
 
 
-            </div> 
+            </div>
+            </div>
+
             <script>
 
                 const textWelcome = document.getElementById('welcome-text'); 
@@ -318,18 +337,27 @@
                 var click = false;
                 function changeColor(){
                     if(click == false){
-                        document.querySelector("#ft-chg-color").style.backgroundColor= "rgb(139, 20, 0)";
-                        document.querySelector("#ft-3dModel").style.backgroundColor= "rgb(139, 20, 0)";
-                        document.querySelector("#clr-onan").style.color= "rgb(139, 20, 0)";
-                        document.querySelector(".ft-wrapper").style.backgroundColor= "rgb(139, 20, 0)";
-                        document.querySelector("#clr-austin").style.color= "rgb(139, 20, 0)";
-                        document.querySelector("#about-p").style.borderColor= "rgb(139, 20, 0)";
-                        document.querySelector("#active-wraper").style.borderColor= "rgb(139, 20, 0)";
-                        document.querySelector("#active").style.color= "rgb(139, 20, 0)";
-                        document.querySelector(".navbar-text").style.color= "rgb(139, 20, 0)";
+                        document.querySelector("#ft-chg-color").style.animation = "rainbow-bg 10s linear infinite"
+                        document.querySelector("#ft-3dModel").style.animation = "rainbow-bg 10s linear infinite"
+                        document.querySelector("#clr-onan").style.animation = "rainbow 10s linear infinite"
+                        document.querySelector(".ft-wrapper").style.animation = "rainbow-bg 10s linear infinite"
+                        document.querySelector("#clr-austin").style.animation = "rainbow 10s linear infinite"
+                        document.querySelector("#about-p").style.animation = "rainbow-bc 10s linear infinite"
+                        document.querySelector("#active-wraper").style.animation= "rainbow-bc 5s linear infinite"
+                        document.querySelector("#active").style.animation = "rainbow 10s linear infinite"
+                        document.querySelector(".navbar-text").style.animation = "rainbow 10s linear infinite"
                         click=true;
                     }else{
                         click=false;
+                        document.querySelector("#ft-chg-color").style.animation = "none"
+                        document.querySelector("#ft-3dModel").style.animation = "none"
+                        document.querySelector("#clr-onan").style.animation = "none"
+                        document.querySelector(".ft-wrapper").style.animation = "none"
+                        document.querySelector("#clr-austin").style.animation = "none"
+                        document.querySelector("#about-p").style.animation = "none"
+                        document.querySelector("#active-wraper").style.animation= "none"
+                        document.querySelector("#active").style.animation = "none"
+                        document.querySelector(".navbar-text").style.animation = "none"
                         document.querySelector("#ft-chg-color").style.backgroundColor= "rgb(243, 220, 190)";
                         document.querySelector("#ft-3dModel").style.backgroundColor= "rgb(243, 220, 190)";
                         document.querySelector("#clr-onan").style.color= "rgb(243, 220, 190)";
