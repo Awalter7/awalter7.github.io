@@ -1,0 +1,164 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+    <link rel ="stylesheet" href="css/main.css"> 
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-analytics.js"></script>
+</head>
+<body>
+<section class="chat">
+      <h1 class="visually-hidden">Messenger</h1>
+      <div class="chat-content">
+      </div>
+
+      <form class="chat-form" action="https://echo.htmlacademy.ru/courses" method="post">
+        <input class="chat-form-input" type="text" aria-label="Your message" placeholder="Write something" required>
+        <button class="chat-form-button" type="submit">Submit</button>
+      </form>
+    </section>
+
+    <template id="message-template">
+      <div class="chat-message" tabindex="0">
+        <span class="chat-message-name">Unidentified raccoon</span>
+        <p class="chat-message-text"></p>
+        <button class="chat-message-button" type="button">Delete</button>
+      </div>
+    </template>
+
+    <template id="message-template1">
+      <div class="chat-message1" tabindex="0">
+        <span class="chat-message-name1">Unidentified raccoon</span>
+        <p class="chat-message-text1"></p>
+      </div>
+    </template>
+    
+    <script type="module">
+      import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js'
+              let chatBox = document.querySelector('.chat-content');
+        let messages = chatBox.children;
+        let newMessageForm = document.querySelector('.chat-form');
+        var nameSent = null;
+        var messageSent = null; 
+        let newMessageInput = newMessageForm.querySelector('.chat-form-input');
+        let messageTemplate = document.querySelector('#message-template').content;
+        let messageTemplate1 = document.querySelector('#message-template1').content;
+        let newMessageTemplate = messageTemplate.querySelector('.chat-message');
+        let newMessageTemplate1 = messageTemplate1.querySelector('.chat-message1');
+        
+        let guid = () => {
+            let s4 = () => {
+                return Math.floor((1 + Math.random()) * 0x10000)
+                    .toString(16)
+                    .substring(1);
+            }
+            //return id of format 'aaaaaaaa'-'aaaa'-'aaaa'-'aaaa'-'aaaaaaaaaaaa'
+            return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+        }
+
+        let id = guid();
+        const firebaseConfig = {
+          apiKey: "AIzaSyB2PuEiAh7qtEgwasmkFIGoO-8wM56J3tY",
+          authDomain: "projectcsci225.firebaseapp.com",
+          projectId: "projectcsci225",
+          storageBucket: "projectcsci225.appspot.com",
+          messagingSenderId: "517167171471",
+          appId: "1:517167171471:web:a28c3e6f52714367faadfa",
+          measurementId: "G-WJ3Z48K56Y"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        
+        
+        function writeData(){
+
+          var inputJson = {            
+              idNum: id,
+              name: "austin",
+              text: newMessageForm.querySelector('.chat-form-input').value
+            }
+          firebase.firestore().collection("messages").add(inputJson);
+          getData()
+        }
+
+        function getData(){
+          firebase
+          .firestore()
+          .collection("message")
+          .onSnapshot(querySnapshot => {
+            querySnapshot.forEach(doc => {
+              console.log(doc.data().idNum);
+              console.log(doc.data().name);
+              console.log(doc.data().text);
+            });
+          });
+        }
+
+        firebase.firestore().collection('messages').onSnapshot(snapshot => {
+          let changes = snapshot.docChanges();
+          changes.forEach(change => {
+            console.log(change);
+            if(change.type =='added'){
+              setVar(change.doc.data());
+            }
+          })
+
+        })
+
+        function identity(){
+          var id = Date.now()
+        }
+        function setVar(x){
+          if(x.idNum != id){
+            console.log(x.idNum)
+            nameSent = x.name;
+            newMessageInput.value = x.text;
+            sent();
+          }else{
+
+          }
+        }
+
+        newMessageForm.addEventListener('submit', function (evt) {
+          evt.preventDefault();
+          let messageText = newMessageInput.value;
+          let newMessage = newMessageTemplate.cloneNode(true);
+          newMessage.querySelector('.chat-message-text').textContent = messageText;
+          deleteMessageHandler(newMessage);
+          chatBox.appendChild(newMessage);
+          writeData();
+        
+        });
+
+        function sent() {
+          let messageText = newMessageInput.value;
+          let newMessage = newMessageTemplate1.cloneNode(true);
+          newMessage.querySelector('.chat-message-text1').textContent = messageText;
+          chatBox.appendChild(newMessage);
+          
+          newMessageInput.value = '';
+        };
+
+        let deleteMessageHandler = function (message) {
+          let kreuz = message.querySelector('.chat-message-button');
+          kreuz.addEventListener('click', function () {
+          message.remove(); 
+        });    
+        }
+
+        for (let i = 0; i < messages.length;i++) {
+          deleteMessageHandler(messages[i]);  
+        }
+        for (let i = 0; i < messages.length;i++) {
+          deleteMessageHandler1(messages[i]);  
+        }
+
+
+    </script>
+</body>
+</html>
