@@ -16,7 +16,6 @@
   src: url("../font/SpecifyPERSONAL-ExExpMedium.ttf"); 
 } 
   .tp-wrapper{
-    background-color: black;
     position: absolute;
     top: 100px;
     height: 1300px;
@@ -28,7 +27,6 @@
   
   #welcome-text{ 
     position: relative;
-    color: rgb(255, 255, 255); 
     grid-area: sidebar;
     margin-left: 25vw;
     font-family: 'emoFont',sans-serif; 
@@ -114,8 +112,7 @@
     border-bottom: 1px solid rgb(155, 155, 155);
   }
 
-  .onan-wrapper, .austin-wrapper{ 
-
+  .onan-wrapper, .austin-wrapper, .izzy-wrapper{ 
     position: absolute; 
     display: grid;
     grid-gap: 100px;
@@ -130,7 +127,11 @@
   .austin-wrapper{
     top: 3000px; 
   }
-  #member-header1, #member-header2{ 
+  .izzy-wrapper{
+    top: 4400px;
+  }
+
+  #member-header1, #member-header2, #member-header3{ 
     font-family: 'emoFont',sans-serif; 
     font-size: 100px;
     grid-area: header;
@@ -139,7 +140,8 @@
     width: 100px; 
     text-align: center; 
   } 
-  #clr-onan, #clr-austin{
+
+  #clr-onan, #clr-austin, #clr-izzy{
     color: rgba(243, 220, 190, 0.925);
   }
   #delorianLink{ 
@@ -171,13 +173,13 @@
     z-index: 0px;
   } 
 
-  .img-text1,  .img-text3{
+  .img-text1,  .img-text3, .img-text5{
     width: 300px;
     grid-area: text;
     font-size: 30px;
   }
-  .img-text2,  .img-text4{
-    width: 300px;
+  .img-text2,  .img-text4, .img-text6{
+    width: 400px;
     grid-area: text2;
     font-size: 30px;
 
@@ -373,8 +375,11 @@
   }
 
   .scroll-left {
+    position: relative;
+    margin-top: -130px;
     font-family: emoFont-thin;
-    height: 50px; 
+    height: 150px; 
+    padding: 50px;
       color: white;
       background-color: black;
       font-size: 40px;
@@ -385,9 +390,9 @@
     top: 200px;
     position: relative;
     }
-    .scroll-left p {
+    .scroll-left #scl-span-1{
     position: absolute;
-    width: 100%;
+    width: 150%;
     height: 100%;
     margin: 0;
     line-height: 50px;
@@ -423,17 +428,17 @@
     }
     }
 
-
   .ft-wrapper{ 
     display: grid;
     top: 6000px;
     text-shadow: 3px 3px 20px rgba(0, 0, 0, 0.151);
-    grid-template-columns: 25% auto 25%; 
-    grid-template-rows: 25% 25% 25%  25%; 
+    grid-template-columns: auto; 
+    grid-template-rows: auto auto auto; 
+    grid-template-areas: "center" "left"  "right" ;
     position: relative; 
     padding: 50px;
     width: 100%; 
-    height: 500px; 
+    height: auto; 
     background: rgb(243, 220, 190)
   } 
   #ft-img{
@@ -444,8 +449,7 @@
     height: 40px;
   }
   #ft-contact{
-    position: relative;
-    margin-left: -150px;
+    top: 0;
   }
   #ft-contact-wd{
     text-decoration: none;
@@ -458,12 +462,13 @@
   .ft-wrapper .ft-center h1{
     margin-left: 0px;
   }
-  h1{
+  .ft-wrapper h1{
     font-family: emofont;
     text-align: center;
+    padding-top: 20px;
     margin-left: 50px;
     margin-right: 50px;
-    border-bottom: 1px solid black;
+    border-bottom: 20px solid black;
   }
   
   #ft-about-p{
@@ -477,34 +482,26 @@
     width: auto;
     height: auto;
     position: relative;
-    grid-column-start: 2; 
-    grid-column-end: 3; 
-    grid-row-start: 1; 
-    grid-row-end: 5; 
+    grid-area: center;
+    border-bottom: 1px solid black;
   }
   .ft-right{
-    border-left: 1px solid black;
     font-family: emoFont-thin;
     text-align: center;
     width: auto;
     height: auto;
     position: relative;
-    grid-column-start: 3; 
-    grid-column-end: 3; 
-    grid-row-start: 1; 
-    grid-row-end: 5; 
+    border-bottom: 1px solid black;
+    grid-area: right;
   }
   .ft-left{
     color: black;
-    border-right: 1px solid black;
     font-family: emoFont-thin;
     width: auto;
     height: auto;
     position: relative;
-    grid-column-start: 1; 
-    grid-column-end: 2; 
-    grid-row-start: 1; 
-    grid-row-end: 5; 
+    grid-area: left;
+    border-bottom: 1px solid black;
   }
   #ft-right-header{
     color: black
@@ -525,7 +522,6 @@
     width: 200px;
     height: 30px;
     background-color: rgb(243, 220, 190);
-
     border: none;
     border-bottom: 1px solid #050505;
   }
@@ -983,9 +979,11 @@ html{
   } 
 
   .navbar .navbar-brand{ 
+    position: relative;
     color: rgba(243, 220, 190, 0.925); 
-    top: -20px;
+    top: 0px;
     width: 50px; 
+    left: -270px;
   } 
   .brand-cont{
     position: relative;
@@ -1006,6 +1004,7 @@ html{
     position: relative; 
     height: 35px;
     top: 0px;
+    left: -250px;
     margin-left: 30px; 
   } 
   .navbar a{ 
@@ -1043,13 +1042,15 @@ html{
     transition: all .3s cubic-bezier(0.445, 0.05, 0.55, 0.95); 
   } 
   .navbar-text{
+    position: relative;
+    left: 250px;
     color: rgba(243, 220, 190, 0.925); 
   }
   .navbar .nav-item:hover::after{ 
     height: calc(100% + 8px) 
   } 
   @media only screen and (max-width: 1200px) {
-    #member-header2, #member-header1{
+    #member-header2, #member-header1, #member-header3{
       margin-top: 0px;
       margin-left: -160px;
       font-size: 80px;
@@ -1058,6 +1059,10 @@ html{
     .austin-wrapper{
       margin-top: 500px;
     }
+    .izzy-wrapper{
+      margin-top: 900px;
+    }
+    
   }
 
   @media only screen and (max-width: 1000px) {
@@ -1120,25 +1125,29 @@ html{
 
 
   }
-
+  @media only screen and (max-width: 1165px) {
+    .navbar-text{
+      visibility: hidden;
+    }
+  }
   @media only screen and (min-width: 1200px) {
     .tp-wrapper{
       top: 0px;
       grid-template-rows: 20% 60% 30%;
-      grid-template-columns: 10% 50% 20% 10%;
-      grid-template-areas: "top top top top" "test2 sidebar content test" "bottom bottom bottom bottom" 
-    
+      grid-template-columns: 10% 50% 28% 2%;
+      grid-template-areas: "top top top top" "test2 sidebar content test" "bottom bottom bottom bottom" ;
     }
     .lrg-active-wraper{
       top: 100px;
-      margin: 0 auto;
+      left: 50px;
+      float: right;
     }
     .tp-wrapper #welcome-text{
       width: auto;
       font-size: 100px;
       margin-left: 0px;
     }
-    .onan-wrapper, .austin-wrapper{
+    .onan-wrapper, .austin-wrapper, .izzy-wrapper{
       margin: 0 auto;
     }
 
@@ -1148,13 +1157,14 @@ html{
     .tp-wrapper{
       top: 0px;
       grid-template-rows: 20% 60% 30%;
-      grid-template-columns: 10% 50% 20% 10%;
-      grid-template-areas: "top top top top" "test2 sidebar content test" "bottom bottom bottom bottom" 
-    
+      grid-template-columns: 10% 50% 28% 2%;
+      grid-template-areas: "top top top top" "test2 sidebar content test" "bottom bottom bottom bottom" ;
+      left: -100px;
     }
     .lrg-active-wraper{
       top: 100px;
-      margin: 0 auto;
+      left: 50px;
+      float: right;
     }
     .tp-wrapper #welcome-text{
       width: auto;
@@ -1170,13 +1180,14 @@ html{
     .tp-wrapper{
       top: 0px;
       grid-template-rows: 20% 60% 30%;
-      grid-template-columns: 10% 50% 20% 10%;
-      grid-template-areas: "top top top top" "test2 sidebar content test" "bottom bottom bottom bottom" 
-    
+      grid-template-columns: 10% 50% 28% 2%;
+      grid-template-areas: "top top top top" "test2 sidebar content test" "bottom bottom bottom bottom" ;
+      left: -100px;
     }
     .lrg-active-wraper{
       top: 100px;
-      margin: 0 auto;
+      left: 50px;
+      float: right;
     }
     .tp-wrapper #welcome-text{
       width: auto;
@@ -1184,59 +1195,66 @@ html{
       font-size: 100px;
       margin-left: 0px;
     }
-    .onan-wrapper, .austin-wrapper{
+    .onan-wrapper, .austin-wrapper, .izzy-wrapper{
       grid-gap: 50px;
       grid-template-rows: repeat(4, 25%);
       grid-template-columns: repeat(4, 25%);
       grid-template-areas: "empty4 header empty5 empty6" "empty1 image text empty2" "empty1 text2 image2 empty2" "empty3 empty3 empty3 empty3";
       margin: 0 auto;
     }
-    #member-header2, #member-header1{
+    #member-header2, #member-header1, #member-header3{
       margin-left: -200px;
     }
     .box1, .box2, .circle .circle p{
       visibility: visible;
     }
   }
+  @media only screen and (min-width: 1400px) {
+    .tp-wrapper{
+      left: -50px;
+    }
+  }
   @media only screen and (min-width: 1450px) {
     .tp-wrapper{
       top: 0px;
       grid-template-rows: 20% 60% 30%;
-      grid-template-columns: 10% 50% 20% 10%;
-      grid-template-areas: "top top top top" "test2 sidebar content test" "bottom bottom bottom bottom" 
-    
+      grid-template-columns: 10% 50% 28% 2%;
+      grid-template-areas: "top top top top" "test2 sidebar content test" "bottom bottom bottom bottom";
+      left: 0px;
     }
     .lrg-active-wraper{
       top: 100px;
-      margin: 0 auto;
+      left: 50px;
+      float: right;
     }
     .tp-wrapper #welcome-text{
       width: auto;
       font-size: 100px;
       margin-left: 0px;
     }
-    .onan-wrapper, .austin-wrapper{
+    .onan-wrapper, .austin-wrapper, .izzy-wrapper{
       grid-gap: 50px;
       grid-template-rows: repeat(4, 25%);
       grid-template-columns: repeat(4, 25%);
       grid-template-areas: "empty4 header empty5 empty6" "empty1 image text empty2" "empty1 text2 image2 empty2" "empty3 empty3 empty3 empty3";
       margin: 0 auto;
     }
-    #member-header2, #member-header1{
+    #member-header2, #member-header1, #member-header3{
       margin-left: 0px;
     }
   }
   @media only screen and (min-width: 1600px) {
     .tp-wrapper{
       top: 0px;
-      grid-template-rows: 20% 40% 40%;
-      grid-template-columns: 10% 50% 20% 10%;
-      grid-template-areas: "top top top top" "test2 sidebar content test" "bottom bottom bottom bottom"; 
-      margin: 0 auto;
+      grid-template-rows: 20% 60% 30%;
+      grid-template-columns: 10% 50% 28% 2%;
+      grid-template-areas: "top top top top" "test2 sidebar content test" "bottom bottom bottom bottom" ;
+      left: 0px;
     }
     .lrg-active-wraper{
       top: 100px;
-      margin: 0 auto;
+      left: 50px;
+      float: right;
     }
     .tp-wrapper #welcome-text{
       font-size: 125px;
@@ -1244,7 +1262,7 @@ html{
       margin-left: 300px;
       margin-left: 0px;
     }
-    .onan-wrapper, .austin-wrapper{
+    .onan-wrapper, .austin-wrapper, .izzy-wrapper{
       grid-template-rows: repeat(4, 25%);
       grid-template-columns: repeat(4, 25%);
       grid-template-areas: "empty4 header empty5 empty6" "empty1 image text empty2" "empty1 text2 image2 empty2" "empty3 empty3 empty3 empty3";
@@ -1262,13 +1280,14 @@ html{
     .tp-wrapper{
       top: 0px;
       grid-template-rows: 20% 60% 30%;
-      grid-template-columns: 10% 50% 20% 10%;
-      grid-template-areas: "top top top top" "test2 sidebar content test" "bottom bottom bottom bottom" 
-    
+      grid-template-columns: 10% 50% 28% 2%;
+      grid-template-areas: "top top top top" "test2 sidebar content test" "bottom bottom bottom bottom" ;
+      left: 0px;
     }
     .lrg-active-wraper{
       top: 100px;
-      margin: 0 auto;
+      left: 50px;
+      float: right;
     }
     .tp-wrapper #welcome-text{
       width: auto;
@@ -1284,9 +1303,9 @@ html{
     .tp-wrapper{
       top: 0px;
       grid-template-rows: 20% 60% 30%;
-      grid-template-columns: 10% 50% 20% 10%;
-      grid-template-areas: "top top top top" "test2 sidebar content test" "bottom bottom bottom bottom" 
-    
+      grid-template-columns: 10% 50% 28% 2%;
+      grid-template-areas: "top top top top" "test2 sidebar content test" "bottom bottom bottom bottom" ;
+      left: 0px;
     }
     .lrg-active-wraper{
       top: 100px;
@@ -1298,15 +1317,36 @@ html{
       font-size: 155px;
       margin-left: 0px;
     }
-    .onan-wrapper, .austin-wrapper{
+    .onan-wrapper, .austin-wrapper, .izzy-wrapper{
       margin: 0 auto;
       grid-template-rows: repeat(4, 25%);
       grid-template-columns: repeat(4, 25%);
       grid-template-areas: "empty4 header empty5 empty6" "empty1 image text empty2" "empty1 text2 image2 empty2" "empty3 empty3 empty3 empty3";
-      
     }
     .box-1, .box-2, .circle, .circle p{
       visibility: visible;
+    }
+
+    .ft-wrapper{ 
+      display: grid;
+      top: 6000px;
+      grid-template-columns: 25% auto 25%; 
+      grid-template-rows: 25% 25% 25%  25%; 
+      grid-template-areas: "left center right" "left center right" "left center right" "left center right";
+    }
+    .ft-center{
+      border-bottom: none;
+    }
+    .ft-left{
+      border-bottom: none;
+      border-right: 1px solid black;
+    }
+    .ft-right{
+      border-bottom: none;
+      border-left: 1px solid black;
+    }
+    .ft-wrapper h1{
+      border-bottom: 1px solid black;
     }
   }
            
@@ -1338,6 +1378,7 @@ html{
 }
 
 .chat-content {
+  height:  100vh;
   display: grid;
   align-content: end;
   align-items: end;
@@ -1346,14 +1387,14 @@ html{
   padding: 15px 20px 24px 30px;
   overflow: auto;
 
-  background-color: #7575751f;
+  background-color: #000000;
 
 }
 
 .chat-message, .chat-message1 {
   position: relative;
   padding: 3px 20px 11px;
-  background-color: #ffffff;
+  background-color: rgb(243, 220, 190);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 20px 4px 4px 20px;
   max-width: 425px;
@@ -1372,13 +1413,15 @@ html{
 }
 
 .chat-message-text, .chat-message-text1{
+  color: rgb(0, 0, 0);
+  font-family: sans-serif;
+  text-shadow: -1px 0px 10px rgba(0, 0, 0, .5);
   margin: 0;
 }
 
 .chat-message-name, .chat-message-name1{
   display: inline-block;
   margin-bottom: 2px;
-
   font-size: 12px;
   line-height: 16px;
 
@@ -1392,9 +1435,7 @@ html{
   top: -5px;
   right: -5px;
   padding: 0;
-
   visibility: hidden;
-
   background-color: #ffffff;
   background-image: url("https://htmlacademy.ru/assets/courses/303/icon-cross.svg");
   background-repeat: no-repeat;
@@ -1423,6 +1464,7 @@ html{
 
 .chat-form {
   display: flex;
+  font-family: sans-serif;
   align-items: center;
   padding: 32px 20px;
   background-color:  rgb(243, 220, 190);
@@ -1430,11 +1472,9 @@ html{
 
 .chat-form-input {
   flex-grow: 1;
-
   box-sizing: border-box;
   margin-right: 16px;
   padding: 9px 20px 11px;
-
   border: 2px solid #ffffff;
   background-color: #ffffff;
 }
