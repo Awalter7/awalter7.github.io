@@ -3,7 +3,6 @@
 	<head>
 		<meta charset="utf-8">
 		<title>My first three.js app</title>
-		<link rel ="stylesheet" href="css/main.css"> 
 		<style>
 			body{
 				background-color: rgb(255, 255, 255);
@@ -37,12 +36,10 @@
 				height: 200px;
 				background-color: rgb(0, 0, 0);
 			}
-
 		</style>
 	</head>
 	
 	<body>
-
 		<div class="main-wrapper"> 
 
                <div id="objectplace"> 
@@ -60,7 +57,6 @@
 					<button id="makegreen">Make the model green...</button>
 					<button id="makewireframe">Make the model wireframe...</button>
 				</div>
-
 		<div>
 
 		
@@ -69,13 +65,21 @@
 			import { OrbitControls } from 'https://unpkg.com/three@0.126.1/examples/jsm/controls/OrbitControls.js';
 			import { GLTFLoader} from 	  'https://unpkg.com/three@0.126.1/examples/jsm/loaders/GLTFLoader.js'	;
 
+			var mixer;
+			var clips;
+			var twerk;
+			var opendoorr;
+			var opendoorl;
+			
+
+
 			const scene = new THREE.Scene();
-			var delorian = {active:false};
-			var tvscreen = {active:false};
-			var xaxis = {active:false};
-			var yaxis = {active:false};
-			var zaxis = {active:false};
-			var grid = {active:false};
+			var delorian = {active:false,green:false};
+			var tvscreen = {active:false,green:false};
+			var xaxis = {active:false,green:false};
+			var yaxis = {active:false,green:false};
+			var zaxis = {active:false,green:false};
+			var grid = {active:false,green:false};
 			var isgreen = false;
 			document.getElementById("makegreen").addEventListener("click",makegreen,false);
 			function makegreen(){
@@ -217,7 +221,7 @@
 			// Load a glTF resource
 			loader.load(
 				// resource URL
-				'models/DelorianRotate.gltf',
+				'js/models/delorian.gltf',
 				// called when the resource is loaded
 				function ( gltf ) {
 					delorian["object"] = gltf.scene;
@@ -227,7 +231,20 @@
 					gltf.scenes; // Array<THREE.Group>
 					gltf.cameras; // Array<THREE.Camera>
 					gltf.asset; // Object
-
+					mixer = new THREE.AnimationMixer(gltf.scene);
+					clips = gltf.animations;
+					
+						// Play a specific animation
+					var clip = THREE.AnimationClip.findByName( clips, 'opendoorl' );
+					opendoorl = mixer.clipAction( clip );
+					opendoorl.clampWhenFinished = true;
+					opendoorl.setLoop(THREE.LoopPingPong,Infinity);
+					clip = THREE.AnimationClip.findByName(clips, "twerk");
+					twerk = mixer.clipAction(clip);
+					clip = THREE.AnimationClip.findByName(clips,"opendoorr");
+					opendoorr = mixer.clipAction(clip);
+					opendoorr.clampWhenFinished = true;
+					opendoorr.setLoop(THREE.LoopPingPong,Infinity);
 				},
 				// called while loading is progressing
 				function ( xhr ) {
@@ -245,7 +262,7 @@
 
 			loader.load(
 				// resource URL
-				'models/grid.gltf',
+				'js/models/grid.gltf',
 				// called when the resource is loaded
 				function ( gltf ) {
 
@@ -274,7 +291,7 @@
 
 			loader.load(
 				// resource URL
-				'models/xaxis.gltf',
+				'js/models/xaxis.gltf',
 				// called when the resource is loaded
 				function ( gltf ) {
 
@@ -303,7 +320,7 @@
 
 			loader.load(
 				// resource URL
-				'models/yaxis.gltf',
+				'js/models/yaxis.gltf',
 				// called when the resource is loaded
 				function ( gltf ) {
 
@@ -332,7 +349,7 @@
 
 			loader.load(
 				// resource URL
-				'models/zaxis.gltf',
+				'js/models/zaxis.gltf',
 				// called when the resource is loaded
 				function ( gltf ) {
 
@@ -361,7 +378,7 @@
 
 			loader.load(
 				// resource URL
-				'models/tv.gltf',
+				'js/models/tv.gltf',
 				// called when the resource is loaded
 				function ( gltf ) {
 
@@ -395,16 +412,53 @@
 				renderer.setSize(window.innerWidth, window.innerHeight)
 				render()
 			}
-
+			var clock = new THREE.Clock();
+			var speed = 2; //units a second
+			var delta = 0;
 
 			function animate() {
 				requestAnimationFrame(animate);
-
+				delta = clock.getDelta();
 				controls.update();
-
+				mixer.update( delta );
 				render();
-
+				
 			};
+
+			
+			const raycaster = new THREE.Raycaster();
+			const mouse = new THREE.Vector2();
+
+			function clickedmouse( event ) {
+				
+				// calculate mouse position in normalized device coordinates
+				// (-1 to +1) for both components
+
+				mouse.x = ( event.clientX / document.getElementById("objectplace").innerWidth ) * 2 - 1;
+				mouse.y = - ( event.clientY / document.getElementById("objectplace").innerHeight ) * 2 + 1;
+				
+				
+				raycaster.setFromCamera( mouse, camera );
+
+				// calculate objects intersecting the picking ray
+				const intersects = raycaster.intersectObjects( scene.children );
+				console.log("clicked!");
+				if(intersects.length > 0){
+					console.log("clicked!2");
+					
+				}
+
+				if(event.which == 2){
+					twerk.reset();
+					twerk.play();
+				}
+				opendoorl.reset();
+				opendoorr.reset();
+				opendoorl.play();
+				opendoorr.play();
+			}
+			
+			window.addEventListener( 'mousedown', clickedmouse, false );
 
 			function render() {
 				
