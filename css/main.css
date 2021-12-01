@@ -19,9 +19,10 @@
     background-color: black;
     position: absolute;
     top: 100px;
+    height: 1300px;
     display: grid;
     grid-gap: 1em;
-    grid-template-areas: "header" "sidebar" "content" "sidebar2" "bottom"; 
+    grid-template-areas: "sidebar" "content" "bottom"; 
     width: 100%;
   }
   
@@ -37,7 +38,6 @@
   .lrg-active-wraper{ 
     position: relative;
     grid-area: content;
-    margin-left: 25vw;
     width: 400px; 
     height: 800px; 
   } 
@@ -73,12 +73,14 @@
   
 
   .circle p{
+    visibility: hidden;
     width: 250px;
     left: 25px;
     position: relative;
     top: 50px;
   }
   .circle{
+   visibility: hidden;
     position: relative;
     width:300px;
     height:300px;
@@ -96,6 +98,7 @@
     transform: rotate(-45deg);
   }
   .box-1{
+    visibility: hidden;
     grid-area: image2;
     position: relative;
     width: 400px;
@@ -103,6 +106,7 @@
     border-right: 1px solid rgb(155, 155, 155);
   }
   .box-2{
+    visibility: hidden;
     grid-area: image2;
     position: relative;
     height: auto;
@@ -111,15 +115,15 @@
   }
 
   .onan-wrapper, .austin-wrapper{ 
+
     position: absolute; 
     display: grid;
     grid-gap: 100px;
     grid-template-rows: repeat(5, 20%);
-    grid-template-columns: auto;
-    grid-template-areas: "header " "image" "text" "image2" "text2";
+    grid-template-columns: 20% 30% 20%;
+    grid-template-areas: "empty header empty2" "empty image empty2" "empty text empty2" "empty image2 empty2" "empty text2 empty2";
     font-family: 'emoFont-thin',sans-serif; 
-    top: 1700px; 
-    left: 0px; 
+    top: 1700px;  
     height: 1200px; 
     width: 100%; 
   } 
@@ -368,7 +372,56 @@
     }
   }
 
-
+  .scroll-left {
+    font-family: emoFont-thin;
+    height: 50px; 
+      color: white;
+      background-color: black;
+      font-size: 40px;
+    overflow: hidden;
+    grid-area: bottom;
+    left: 0px;
+    width: 120%;
+    top: 200px;
+    position: relative;
+    }
+    .scroll-left p {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    line-height: 50px;
+    text-align: center;
+    /* Starting position */
+    -moz-transform:translateX(100%);
+    -webkit-transform:translateX(100%); 
+    transform:translateX(100%);
+    /* Apply animation to this element */ 
+    -moz-animation: scroll-left 20s linear infinite;
+    -webkit-animation: scroll-left 20s linear infinite;
+    animation: scroll-left 20s linear infinite;
+    }
+    /* Move it (define the animation) */
+    @-moz-keyframes scroll-left {
+    0% { -moz-transform: translateX(100%); }
+    100% { -moz-transform: translateX(-100%); }
+    }
+    @-webkit-keyframes scroll-left {
+    0% { -webkit-transform: translateX(100%); }
+    100% { -webkit-transform: translateX(-100%); }
+    }
+    @keyframes scroll-left {
+    0% { 
+    -moz-transform: translateX(100%); /* Browser bug fix */
+    -webkit-transform: translateX(100%); /* Browser bug fix */
+    transform: translateX(100%); 
+    }
+    100% { 
+    -moz-transform: translateX(-100%); /* Browser bug fix */
+    -webkit-transform: translateX(-100%); /* Browser bug fix */
+    transform: translateX(-100%); 
+    }
+    }
 
 
   .ft-wrapper{ 
@@ -995,12 +1048,6 @@ html{
   .navbar .nav-item:hover::after{ 
     height: calc(100% + 8px) 
   } 
-  @media only screen and (max-width: 1000px) {
-    nav .navbar-text{
-      visibility: hidden;
-  
-    }
-  }
   @media only screen and (max-width: 1200px) {
     #member-header2, #member-header1{
       margin-top: 0px;
@@ -1008,16 +1055,16 @@ html{
       font-size: 80px;
       width: 100px;
     }
-    .onan-wrapper{
-      margin-left: 35vw;
-    }
     .austin-wrapper{
       margin-top: 500px;
-      margin-left: 35vw;
     }
   }
 
   @media only screen and (max-width: 1000px) {
+    nav .navbar-text{
+      visibility: hidden;
+  
+    }
     nav .nav-item:nth-child(3){
       position: absolute;
       top: -40px;
@@ -1059,174 +1106,395 @@ html{
     }
   }
 
-  @media only screen and (min-width: 900px) {
-
-    .tp-wrapper {
-      grid-gap: 200px;
-      
-      height: min-content;
-      grid-template-columns: 20% auto;
-      grid-template-areas: "top top top" "sidebar content sidebar2" "bottom  bottom  bottom";
+  @media only screen and (max-width: 1100px) {
+    .lrg-active-wraper{
+      top: 0px;
+      margin: 0 auto;
     }
     .tp-wrapper #welcome-text{
-      margin-left: 100px;
-      margin-top: 50px;
+      margin: 0 auto;
       font-size: 50px;
 
+      margin-top: 100px;
     }
-    .tp-wrapper .lrg-active-wraper{
-      margin-left: 155px;
 
-    }
+
   }
-  @media only screen and (min-width: 1000px) {
 
-    .tp-wrapper {
-      grid-gap: 200px;
-      height: min-content;
-      grid-template-columns: 25% auto 25% ;
-      grid-template-areas: "top top top" "sidebar content sidebar2" "bottom  bottom  bottom";
+  @media only screen and (min-width: 1200px) {
+    .tp-wrapper{
+      top: 0px;
+      grid-template-rows: 20% 60% 30%;
+      grid-template-columns: 10% 50% 20% 10%;
+      grid-template-areas: "top top top top" "test2 sidebar content test" "bottom bottom bottom bottom" 
+    
+    }
+    .lrg-active-wraper{
+      top: 100px;
+      margin: 0 auto;
     }
     .tp-wrapper #welcome-text{
-      font-size: 60px;
-    }
-    .tp-wrapper .lrg-active-wraper{
+      width: auto;
+      font-size: 100px;
       margin-left: 0px;
+    }
+    .onan-wrapper, .austin-wrapper{
+      margin: 0 auto;
+    }
 
-    }
-  }
-  @media only screen and (min-width: 1200px) {
-    .onan-wrapper{
-      margin-left: -15vw;
-    }
 
   }
   @media only screen and (min-width: 1100px) {
-
-    .tp-wrapper {
-      grid-gap: 200px;
-      height: min-content;
-      grid-template-columns: 25% auto 25% ;
-      grid-template-areas: "top top top" "sidebar content sidebar2" "bottom  bottom  bottom";
+    .tp-wrapper{
+      top: 0px;
+      grid-template-rows: 20% 60% 30%;
+      grid-template-columns: 10% 50% 20% 10%;
+      grid-template-areas: "top top top top" "test2 sidebar content test" "bottom bottom bottom bottom" 
+    
+    }
+    .lrg-active-wraper{
+      top: 100px;
+      margin: 0 auto;
     }
     .tp-wrapper #welcome-text{
-      font-size: 60px;
-    }
-    .tp-wrapper .lrg-active-wraper{
+      width: auto;
+      font-size: 90px;
+      margin-top: 70px;
       margin-left: 0px;
-
+    }
+    .box1, .box2, .circle .circle p{
+      visibility: visible;
     }
   }
   @media only screen and (min-width: 1200px) {
-    .tp-wrapper {
-      grid-gap: 200px;
-      height: min-content;
-      grid-template-columns: 25% auto 25% ;
-      grid-template-areas: "top top top" "sidebar content sidebar2" "bottom  bottom  bottom";
+    .tp-wrapper{
+      top: 0px;
+      grid-template-rows: 20% 60% 30%;
+      grid-template-columns: 10% 50% 20% 10%;
+      grid-template-areas: "top top top top" "test2 sidebar content test" "bottom bottom bottom bottom" 
+    
+    }
+    .lrg-active-wraper{
+      top: 100px;
+      margin: 0 auto;
+    }
+    .tp-wrapper #welcome-text{
+      width: auto;
+      margin-top: 60px;
+      font-size: 100px;
+      margin-left: 0px;
     }
     .onan-wrapper, .austin-wrapper{
       grid-gap: 50px;
       grid-template-rows: repeat(4, 25%);
       grid-template-columns: repeat(4, 25%);
       grid-template-areas: "empty4 header empty5 empty6" "empty1 image text empty2" "empty1 text2 image2 empty2" "empty3 empty3 empty3 empty3";
-      margin-left:-10vh;
+      margin: 0 auto;
     }
     #member-header2, #member-header1{
-      margin-left: 0px;
-    }
-    .tp-wrapper #welcome-text{
-      margin-top: 0;
-      width: 800px;
-      font-size: 90px;
-    }
-    .tp-wrapper .lrg-active-wraper{
       margin-left: -200px;
-      grid-area: sidebar2;
-
     }
-
+    .box1, .box2, .circle .circle p{
+      visibility: visible;
+    }
   }
   @media only screen and (min-width: 1450px) {
-    .tp-wrapper {
-      grid-gap: 200px;
-      grid-template-columns: 25% auto 25% ;
-      grid-template-areas: "top top top" "sidebar content sidebar2" "bottom  bottom  bottom";
+    .tp-wrapper{
+      top: 0px;
+      grid-template-rows: 20% 60% 30%;
+      grid-template-columns: 10% 50% 20% 10%;
+      grid-template-areas: "top top top top" "test2 sidebar content test" "bottom bottom bottom bottom" 
+    
+    }
+    .lrg-active-wraper{
+      top: 100px;
+      margin: 0 auto;
+    }
+    .tp-wrapper #welcome-text{
+      width: auto;
+      font-size: 100px;
+      margin-left: 0px;
     }
     .onan-wrapper, .austin-wrapper{
       grid-gap: 50px;
       grid-template-rows: repeat(4, 25%);
       grid-template-columns: repeat(4, 25%);
       grid-template-areas: "empty4 header empty5 empty6" "empty1 image text empty2" "empty1 text2 image2 empty2" "empty3 empty3 empty3 empty3";
-      margin-left:-10vh;
+      margin: 0 auto;
     }
     #member-header2, #member-header1{
       margin-left: 0px;
-    }
-    .tp-wrapper #welcome-text{
-      margin-top: 0;
-      width: 900px;
-      font-size: 90px;
     }
   }
   @media only screen and (min-width: 1600px) {
-    .tp-wrapper {
-      grid-gap: 200px;
-      grid-template-columns: 25% auto 25% ;
-      grid-template-areas: "top top top" "sidebar content sidebar2" "bottom  bottom  bottom";
+    .tp-wrapper{
+      top: 0px;
+      grid-template-rows: 20% 40% 40%;
+      grid-template-columns: 10% 50% 20% 10%;
+      grid-template-areas: "top top top top" "test2 sidebar content test" "bottom bottom bottom bottom"; 
+      margin: 0 auto;
+    }
+    .lrg-active-wraper{
+      top: 100px;
+      margin: 0 auto;
+    }
+    .tp-wrapper #welcome-text{
+      font-size: 125px;
+      margin-top: 10px;
+      margin-left: 300px;
+      margin-left: 0px;
     }
     .onan-wrapper, .austin-wrapper{
-      left: 150px;
       grid-template-rows: repeat(4, 25%);
       grid-template-columns: repeat(4, 25%);
       grid-template-areas: "empty4 header empty5 empty6" "empty1 image text empty2" "empty1 text2 image2 empty2" "empty3 empty3 empty3 empty3";
-      margin-left:-10vh;
+      margin: 0 auto;
     }
     #member-header2{
       margin-left: 0px;
     }
-    .tp-wrapper #welcome-text{
-      margin-left: 200px;
-      width: 1000px;
-      font-size: 5vw;
+    .box1, .box2, .circle .circle p{
+      visibility: visible;
     }
 
   }
   @media only screen and (min-width: 1900px) {
-    .tp-wrapper {
-      margin-top: -200px;
-      grid-gap: 200px;
-      grid-template-rows: 10% 80% 10%;
-      grid-template-columns: 25% auto 25% ;
-      grid-template-areas: "top top top" "sidebar content sidebar2" "bottom  bottom  bottom";
+    .tp-wrapper{
+      top: 0px;
+      grid-template-rows: 20% 60% 30%;
+      grid-template-columns: 10% 50% 20% 10%;
+      grid-template-areas: "top top top top" "test2 sidebar content test" "bottom bottom bottom bottom" 
+    
+    }
+    .lrg-active-wraper{
+      top: 100px;
+      margin: 0 auto;
+    }
+    .tp-wrapper #welcome-text{
+      width: auto;
+      margin-top: -20px;
+      font-size: 145px;
+      margin-left: 0px;
+    }
+    .box1, .box2, .circle .circle p{
+      visibility: visible;
+    }
+  }
+  @media only screen and (min-width: 2000px) {
+    .tp-wrapper{
+      top: 0px;
+      grid-template-rows: 20% 60% 30%;
+      grid-template-columns: 10% 50% 20% 10%;
+      grid-template-areas: "top top top top" "test2 sidebar content test" "bottom bottom bottom bottom" 
+    
+    }
+    .lrg-active-wraper{
+      top: 100px;
+      margin: 0 auto;
+    }
+    .tp-wrapper #welcome-text{
+      width: auto;
+      margin-top: -40px;
+      font-size: 155px;
+      margin-left: 0px;
     }
     .onan-wrapper, .austin-wrapper{
+      margin: 0 auto;
       grid-template-rows: repeat(4, 25%);
       grid-template-columns: repeat(4, 25%);
       grid-template-areas: "empty4 header empty5 empty6" "empty1 image text empty2" "empty1 text2 image2 empty2" "empty3 empty3 empty3 empty3";
-    }
-    .tp-wrapper #welcome-text{
-      position: absolute;
-      margin-top: 200px;
-      margin-left: 200px;
-      width: 1200px;
-      top: -150px;
-      font-size: 6vw;
-    }
-    .tp-wrapper .lrg-active-wraper{
-      margin-top: 200px;
-    }
-    .tp-wrapper #welcome-text{
-      width: 1000px;
-    }
-  }
-  @media only screen and (min-width: 2150px) {
-    .tp-wrapper #welcome-text{
-      width: 1000px;
       
     }
-  }
-  @media only screen and (min-width: 2200px) {
-    .tp-wrapper #welcome-text{
-      width: 1600px;
+    .box-1, .box-2, .circle, .circle p{
+      visibility: visible;
     }
   }
+           
+
+
+
+
+.visually-hidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+
+  white-space: nowrap;
+
+  border: 0;
+
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+}
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.chat-content {
+  display: grid;
+  align-content: end;
+  align-items: end;
+  justify-content: end;
+  flex-grow: 1;
+  padding: 15px 20px 24px 30px;
+  overflow: auto;
+
+  background-color: #5c8ab3;
+
+}
+
+.chat-message, .chat-message1 {
+  position: relative;
+  padding: 3px 20px 11px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 20px 4px 4px 20px;
+  max-width: 425px;
+}
+.chat-message1 {
+  left: -80vw;
+}
+
+.chat-message:hover .chat-message-button,
+.chat-message:focus .chat-message-button {
+  visibility: visible;
+}
+
+.chat-message:focus-within .chat-message-button  {
+  visibility: visible;
+}
+
+.chat-message-text, .chat-message-text1{
+  margin: 0;
+}
+
+.chat-message-name, .chat-message-name1{
+  display: inline-block;
+  margin-bottom: 2px;
+
+  font-size: 12px;
+  line-height: 16px;
+
+  color: #6994ba;
+}
+
+.chat-message-button{
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  top: -5px;
+  right: -5px;
+  padding: 0;
+
+  visibility: hidden;
+
+  background-color: #ffffff;
+  background-image: url("https://htmlacademy.ru/assets/courses/303/icon-cross.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  border: none;
+  border-radius: 50%;
+  font: inherit;
+  font-size: 0;
+
+  user-select: none;
+  touch-action: manipulation;
+  cursor: pointer;
+}
+
+.chat-message + .chat-message, .chat-message1 + .chat-message1 {
+  margin-top: 12px;
+}
+
+.chat-message{
+  border-radius: 20px 20px 4px 20px;
+}
+
+.chat-message1{
+  border-radius: 20x 20px 20px 4px;
+}
+
+.chat-form {
+  display: flex;
+  align-items: center;
+  padding: 32px 20px;
+  background-color: #265681;
+}
+
+.chat-form-input {
+  flex-grow: 1;
+
+  box-sizing: border-box;
+  margin-right: 16px;
+  padding: 9px 20px 11px;
+
+  border: 2px solid #ffffff;
+  background-color: #ffffff;
+}
+
+.chat-form-input::placeholder {
+  color: #cccccc;
+}
+
+.chat-form-input:hover {
+  border-color: #56cf4c;
+  outline: none;
+}
+
+.chat-form-input:focus {
+  border-color: #9edcff;
+  outline: none;
+}
+
+.chat-form-input,
+.chat-form-button {
+  border-radius: 50px;
+  font: inherit;
+}
+
+.chat-form-button {
+  flex-shrink: 0;
+  padding: 9px 20px;
+
+  color: #ffffff;
+
+  background-color: #39b54a;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
+  border: 2px solid transparent;
+
+  user-select: none;
+  outline: none;
+  touch-action: manipulation;
+  cursor: pointer;
+}
+
+.chat-form-button::before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  width: 19px;
+  height: 20px;
+  margin-right: 6px;
+}
+
+.chat-form-button:hover {
+  background-color: #56cf4c;
+  box-shadow: 0 8px 4px rgba(0, 0, 0, 0.15);
+}
+
+.chat-form-button:focus {
+  border-color: 2px solid #9edcff;
+}
+
+.chat-form-button:active {
+  background-color: #208b44;
+  box-shadow: none;
+}
