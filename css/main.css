@@ -1346,7 +1346,7 @@ html{
   padding: 15px 20px 24px 30px;
   overflow: auto;
 
-  background-color: #5c8ab3;
+  background-color: #7575751f;
 
 }
 
@@ -1404,7 +1404,6 @@ html{
   border-radius: 50%;
   font: inherit;
   font-size: 0;
-
   user-select: none;
   touch-action: manipulation;
   cursor: pointer;
@@ -1419,14 +1418,14 @@ html{
 }
 
 .chat-message1{
-  border-radius: 20x 20px 20px 4px;
+  border-radius: 20x 20px 20px 20px;
 }
 
 .chat-form {
   display: flex;
   align-items: center;
   padding: 32px 20px;
-  background-color: #265681;
+  background-color:  rgb(243, 220, 190);
 }
 
 .chat-form-input {
@@ -1445,7 +1444,7 @@ html{
 }
 
 .chat-form-input:hover {
-  border-color: #56cf4c;
+  border-color: #000000;
   outline: none;
 }
 
@@ -1466,7 +1465,7 @@ html{
 
   color: #ffffff;
 
-  background-color: #39b54a;
+  background-color: #b53939;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
   border: 2px solid transparent;
 
@@ -1486,7 +1485,7 @@ html{
 }
 
 .chat-form-button:hover {
-  background-color: #56cf4c;
+  background-color: rgb(207, 76, 76);
   box-shadow: 0 8px 4px rgba(0, 0, 0, 0.15);
 }
 
@@ -1495,6 +1494,6 @@ html{
 }
 
 .chat-form-button:active {
-  background-color: #208b44;
+  background-color: #000000;
   box-shadow: none;
 }
