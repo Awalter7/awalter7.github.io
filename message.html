@@ -24,26 +24,36 @@
     <template id="message-template">
       <div class="chat-message" tabindex="0">
         <span class="chat-message-name"></span>
-        <p class="chat-message-text"></p>
+        <br>
+        <span class="chat-message-text"></span>
         <button class="chat-message-button" type="button">Delete</button>
+        <span class="hidden1"></span>
+        <span class="docId1"></span>
       </div>
     </template>
 
     <template id="message-template1">
       <div class="chat-message1" tabindex="0">
         <span class="chat-message-name1"></span>
-        <p class="chat-message-text1"></p>
+        <br>
+        <span class="chat-message-text1"></span>
+        <span class="hidden2"></span>
+        <span class="docId2"></span>
       </div>
     </template>
     
     <script type="module">
       import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js'
-              let chatBox = document.querySelector('.chat-content');
+        let chatBox = document.querySelector('.chat-content');
         let messages = chatBox.children;
         let newMessageForm = document.querySelector('.chat-form');
         var nameSent = null;
         var messageSent = null; 
+        var idNumSent = null; 
+        var sentColor = null;
+        var sentDocId = null;
         var pass = false;
+        var color= generateRandomColor();
         var userName = generateName();
         var sentName = null;
         let newMessageInput = newMessageForm.querySelector('.chat-form-input');
@@ -70,6 +80,16 @@
 
         }
 
+        function generateRandomColor(){
+            let maxVal = 0xFFFFFF; // 16777215
+            let randomNumber = Math.random() * maxVal; 
+            randomNumber = Math.floor(randomNumber);
+            randomNumber = randomNumber.toString(16);
+            let randColor = randomNumber.padStart(6, 0);   
+            return `#${randColor.toUpperCase()}`
+        }
+
+
         let guid = () => {
             let s4 = () => {
                 return Math.floor((1 + Math.random()) * 0x10000)
@@ -82,21 +102,22 @@
 
         let id = guid();
         const firebaseConfig = {
-          apiKey: "AIzaSyBvbWDC7ljaeEptF7JxNALo1SXUzdq8mUU",
-          authDomain: "csci225-project.firebaseapp.com",
-          projectId: "csci225-project",
-          storageBucket: "csci225-project.appspot.com",
-          messagingSenderId: "204148301742",
-          appId: "1:204148301742:web:b1ba7f0f35d8ea8c22723f",
-          measurementId: "G-4NE325RW48"
+          apiKey: "AIzaSyCkO7Ji9Uj_WLUf0FVblxa88Bw4vJnX3lg",
+          authDomain: "project-csci225.firebaseapp.com",
+          projectId: "project-csci225",
+          storageBucket: "project-csci225.appspot.com",
+          messagingSenderId: "29085226297",
+          appId: "1:29085226297:web:ea69b284328e45a0cf84e8",
+          measurementId: "G-3NWJBCXXVH"
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         
         
         function writeData(){
-
+          
           var inputJson = { 
+              color: color, 
               date:  new Date(),       
               idNum: id,
               name: userName,
@@ -119,7 +140,7 @@
             changes.forEach(change => {
               console.log(change);
               if(change.type =='added'){
-                setVar(change.doc.data());
+                setVar(change.doc.data(), change.doc.id);
               }
             })
           } 
@@ -127,42 +148,72 @@
 
         })
 
-        function identity(){
-          var id = Date.now()
-        }
-        function setVar(x){
-          if(x.idNum != id){
-            console.log(x.idNum)
-            sentName = x.name;
-            console.log(sentName)
-            newMessageInput.value = x.text;
-            sent(sentName);
-          }else{
+        var msgNum = 0;
 
+        function setVar(x, y){
+          if(x.idNum != id){
+            sentName = x.name;
+            idNumSent = x.idNum;
+            sentDocId = y
+            sentColor = x.color;
+            newMessageInput.value = x.text;
+            sent();
+          }else{
+            
           }
         }
+        
+
         newMessageForm.addEventListener('submit', function (evt) {
           evt.preventDefault();
           let messageText = newMessageInput.value;
           let newMessage = newMessageTemplate.cloneNode(true);
           $(".chat-message-name").text(userName);
           newMessage.querySelector('.chat-message-text').textContent = messageText;
-
           deleteMessageHandler(newMessage);
-
           chatBox.appendChild(newMessage);
+          var style2 = window.getComputedStyle(messages[msgNum].childNodes[1]);
+          var wdt2 = style2.getPropertyValue('width');
+          console.log(messageText.length);
+          var mL = messageText.length;
+          
+          console.log(userName.length);
+          var nL = userName.length;
+          if(nL+10 > mL){
+            var wdt = nL * 8;
+            console.log( "test1" + wdt);
+          }else if(nL < mL){
+            var wdt = mL * 6;
+            console.log( "test2" + wdt);
+          }
+          messages[msgNum].style.width = wdt + "px";
+          messages[msgNum].style.backgroundColor = color;
+          $(".chat-message-name").text(userName);
           writeData();
-        
+          msgNum++;
         });
 
-        function sent(x) {
+        function sent() {
           let messageText = newMessageInput.value;
           let newMessage = newMessageTemplate1.cloneNode(true);
           newMessage.querySelector('.chat-message-text1').textContent = messageText;
           chatBox.appendChild(newMessage);
-          console.log(x)
-          $(".chat-message-name1").text(x);
           newMessageInput.value = '';
+          messages[msgNum].childNodes[1].innerText = sentName;
+          messages[msgNum].style.backgroundColor = sentColor;
+          var mL = messageText.length;
+          var nL = userName.length;
+          if(nL+10 > mL){
+            var wdt = nL * 8;
+            console.log( "test1" + wdt);
+          }else if(nL < mL){
+            var wdt = mL * 6;
+            console.log( "test2" + wdt);
+          }
+          messages[msgNum].style.width = wdt + "px";
+          chatBox.appendChild(newMessage);
+          msgNum++;
+
         };
 
 

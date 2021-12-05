@@ -19,6 +19,9 @@
         </style> 
     </head> 
     <body> 
+        <div class = "pg-loader2" id="loaderDiv2"> 
+            <span>set your brouser scale to </span><span id = "pg-loader-2-font">80%</span><span> for best results</span>
+        </div>
         <div class = "pg-loader" id="loaderDiv"> 
             <span id = "cp-1">Coding possibility</span>
             <span id = "cp-2">Coding possibility</span>
@@ -45,6 +48,7 @@
                     <a class="nav-item nav-link nav-link " id = "nav-item-3" href="https://www.github.com/awalter7" data-text="GitHub">gitHub</a> 
                 </div> 
             </nav> 
+
             <div class = "tp-wrapper"> 
                 <h1 id = "welcome-text">Starting...</h1> 
                 <div class = "lrg-active-wraper"> 
@@ -64,7 +68,12 @@
                     <span id = "scl-span-1">Coding magic. Coding amazing. Coding amazing. Coding briliance. Coding posibility. Coding the future.</span>
                 </div>
             </div>
-            <div class ="onan-wrapper"> 
+            <div class = "sticky-1" >
+                <p id = "sticky-p"><span id = "sticky-span1">Message</span><span id = "sticky-span2">Get to know the crew</span></p>
+                
+            </div>
+
+            <div class ="onan-wrapper" id="onan"> 
                 <span id = "member-header2"> 
                     <span id = "clr-onan"> 
                         Onan. 
@@ -92,7 +101,9 @@
                     </p>
                 </div>
             </div> 
+            
             <div class= "austin-wrapper">
+                
                 <span class = "img-text3">Austin has found a passion in web development. Especially for Css.</span>
                 <span class = "img-text4">Creating most of the Css included own this Web site. </span>
                 <span id = "member-header1">
@@ -139,7 +150,7 @@
                     </div>
                 </div>
                 <div class = "rt-img-wrap">
-                    <div class = "rotate-image">
+                    <div class = "rotate-image" id="izzy">
                         <span style = "--i:1;">C</span>
                         <span style = "--i:2;">l</span>
                         <span style = "--i:3;">i</span>
@@ -173,7 +184,7 @@
                     </div>
                 </div >
             </div>
-            <div class ="izzy-wrapper"> 
+            <div class ="izzy-wrapper" > 
                 <span id = "member-header3"> 
                     <span id = "clr-izzy"> 
                         izzy. 
@@ -186,7 +197,7 @@
                     </span> 
                 </span> 
                 <span class = "img-text5">onan has a passion for video game develepment shown with great experience</span>
-                <span class = "img-text6">Leading him to be skilled in 3D modeling and all things alike</span>
+                <span class = "img-text6" id="izzy">Leading him to be skilled in 3D modeling and all things alike</span>
             </div> 
             <div class = "ft-wrapper"> 
                 <div class = "ft-center">
@@ -209,6 +220,8 @@
                         <button id="ft-chg-color" name="ft-chg-color" onclick="changeColor()">Color Mode</button>
                         <br>
                         <button id="ft-3dModel" name="ft-3dModel" onclick="window.location.href='3dmodelthing.html';">View Models</button>
+                        <br>
+                        <button id="ft-message" name="ft-message" onclick="window.location.href='message.html';">Msg-Board</button>
                     </div>
                 </div>
                 <div class="ft-left">
@@ -217,14 +230,18 @@
                         <span>Austin: aawalter@usca.edu</span>
                         <br>
                         <br>
-                        <span>Onan: </span>
+                        <span>Onan: iervin@usca.edu</span>
                         <br>
                         <br>
-                        <span>Izzy: </span>
+                        <span>Izzy: ochew@usca.edu</span>
                     </div>  
                 </div>
+            </div>
 
-
+            <div class = "general-wrapper">
+                <p>
+                    Please contact us. we alwas love working on new projects.
+                </p>
             </div>
             </div>
 
@@ -257,6 +274,17 @@
 
                 }); 
 
+                $("#sticky-p").css("left", "-200px");
+                var offset = $("#sticky-p").offset();
+                $(window).scroll(function(event) {
+                    var st = $(this).scrollTop();
+                    if(st < 1140){
+                        console.log(st)
+                        $("#sticky-p").css("left", st + offset.left);
+                    }
+
+                });
+
                 function loader(){ 
                     if(idx3 == 30){
                         document.getElementById("cp-6").style.color = "red";
@@ -287,20 +315,30 @@
                     else if(idx3 == 330){
                         document.getElementById("cp-1").style.color = "#f3dcbe";
                     }
-                    
+
                     idx3++; 
-                    if(idx3 >= 350){ 
+                    if(idx3 >= 500){ 
                         x = true; 
 
-                        $('.pg-loader').slideUp('slow') 
-                        if(idx3 == 350){  
-                            $('.navbar').show(); 
-                            $('.access').hide(); 
-                            clearInterval(loaderIdx);
-                            headerIdx = setInterval(writeText,150); 
-                        } 
+                        $('.pg-loader').slideUp('slow');
+                        
+                        if(idx3 >= 1000){
+                            $('#loaderDiv2').fadeOut('slow');
+                            console.log("test")
+
+                            if(idx3 >= 1050){  
+                                $('.navbar').show(); 
+                                clearInterval(loaderIdx);
+                                headerIdx = setInterval(writeText,150); 
+                            } 
+                        }
+
                     } 
                 } 
+
+                function scaleOut(){
+
+                }
 
                 $ (document).ready (function (){ 
 
@@ -357,6 +395,7 @@
                     if(click == false){
                         document.querySelector("#ft-chg-color").style.animation = "rainbow-bg 10s linear infinite"
                         document.querySelector("#ft-3dModel").style.animation = "rainbow-bg 10s linear infinite"
+                        document.querySelector("#sticky-p").style.animation = "rainbow-bg 10s linear infinite"
                         document.querySelector("#clr-onan").style.animation = "rainbow 10s linear infinite"
                         document.querySelector(".ft-wrapper").style.animation = "rainbow-bg 10s linear infinite"
                         document.querySelector("#clr-austin").style.animation = "rainbow 10s linear infinite"
@@ -364,21 +403,27 @@
                         document.querySelector("#active-wraper").style.animation= "rainbow-bc 5s linear infinite"
                         document.querySelector("#active").style.animation = "rainbow 10s linear infinite"
                         document.querySelector(".navbar-text").style.animation = "rainbow 10s linear infinite"
+                        document.querySelector("#clr-izzy").style.animation = "rainbow 10s linear infinite"
                         click=true;
                     }else{
                         click=false;
+                        
                         document.querySelector("#ft-chg-color").style.animation = "none"
                         document.querySelector("#ft-3dModel").style.animation = "none"
                         document.querySelector("#clr-onan").style.animation = "none"
                         document.querySelector(".ft-wrapper").style.animation = "none"
                         document.querySelector("#clr-austin").style.animation = "none"
+                        document.querySelector("#clr-izzy").style.animation = "none"
                         document.querySelector("#about-p").style.animation = "none"
                         document.querySelector("#active-wraper").style.animation= "none"
                         document.querySelector("#active").style.animation = "none"
                         document.querySelector(".navbar-text").style.animation = "none"
+                        document.querySelector("#sticky-p").style.animation = "none"
+
                         document.querySelector("#ft-chg-color").style.backgroundColor= "rgb(243, 220, 190)";
                         document.querySelector("#ft-3dModel").style.backgroundColor= "rgb(243, 220, 190)";
                         document.querySelector("#clr-onan").style.color= "rgb(243, 220, 190)";
+                        document.querySelector("#clr-izzy").style.color= "rgb(243, 220, 190)";
                         document.querySelector("#clr-austin").style.color= "rgb(243, 220, 190)";
                         document.querySelector(".ft-wrapper").style.backgroundColor= "rgb(243, 220, 190)";
                         document.querySelector("#about-p").style.borderColor= "rgb(243, 220, 190)";
@@ -391,6 +436,5 @@
 
             </script> 
             <script src="js/contactform.js"> </script>
-        </div> 
     </body> 
 </html> 
