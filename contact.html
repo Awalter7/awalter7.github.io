@@ -9,7 +9,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
     <link rel ="stylesheet" href="css/main.css"> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
-
+    <script src = "https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+    <script src = "https://www.gstatic.com/firebasejs/5.0.4/firebase-firestore.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
     <title>Document</title>
 </head>
 <body onload="hideDiv()">
@@ -30,7 +32,7 @@
                 <a class="nav-item nav-link " id = "nav-item-3" href="https://www.github.com/awalter7" data-text="GitHub">gitHub</a> 
             </div> 
         </nav> 
-        <div class = "ct-mg">
+        <div class = "ct-mg ct-mg-chng-one">
             <button id = "ct-Link">
                 <div id = "ct">
                     -Contact by email-
@@ -86,6 +88,8 @@
                     <button id="ft-chg-color" name="ft-chg-color" onclick="changeColor()">Color Mode</button>
                     <br>
                     <button id="ft-3dModel" name="ft-3dModel" onclick="window.location.href='3dmodelthing.html';">View Models</button>
+                    <br>
+                    <button id="ft-message" name="ft-message" onclick="window.location.href='message.html';">Msg-Board</button>
                 </div>
             </div>
             <div class="ft-left">
@@ -94,14 +98,12 @@
                     <span>Austin: aawalter@usca.edu</span>
                     <br>
                     <br>
-                    <span>Onan: </span>
+                    <span>Onan: iervin@usca.edu</span>
                     <br>
                     <br>
-                    <span>Izzy: </span>
+                    <span>Izzy: ochew@usca.edu</span>
                 </div>  
             </div>
-
-
         </div>
     </div>
     <script>
@@ -118,6 +120,44 @@
 
     });
 
+    var click = false;
+                function changeColor(){
+
+                    if(click == false){
+                        document.querySelector("#ft-chg-color").style.animation = "rainbow-bg 10s linear infinite";
+                        document.querySelector("#ft-3dModel").style.animation = "rainbow-bg 10s linear infinite";
+                        document.querySelector("#ft-message").style.animation = "rainbow-bg 10s linear infinite";
+                        document.querySelector(".ft-wrapper").style.animation = "rainbow-bg 10s linear infinite";
+                        document.querySelector(".navbar-text").style.animation = "rainbow 10s linear infinite";
+                        document.querySelector("#mg").style.animation = "rainbow-bc 10s linear infinite";
+                        document.querySelector("#ct").style.animation = "rainbow-bc 10s linear infinite";
+                        document.querySelector(".ct-mg").style.animation = "rainbow-bc 10s linear infinite";
+                        document.querySelector("#active-contact").style.animation = "rainbow 10s linear infinite";
+                        document.querySelector(".ct-mg").classList.remove("ct-mg-chng-one");
+                        document.querySelector(".ct-mg").classList.add("ct-mg-chng-two");
+                        document.querySelector("#ct-header-color").style.animation = "rainbow 10s linear infinite";
+                        document.querySelector(".contact").style.animation = "rainbow-bc 10s linear infinite";
+                        document.querySelector("#nameLast").style.animation = "rainbow-bg 10s linear infinite";
+                        document.querySelector("#nameFirst").style.animation = "rainbow-bg 10s linear infinite";
+                        document.querySelector("#email").style.animation = "rainbow-bg 10s linear infinite";
+                        document.querySelector("#message").style.animation = "rainbow-bg 10s linear infinite";
+                        click=true;
+                    }else{
+                        click=false;
+                        
+                        document.querySelector("#ft-chg-color").style.animation = "none";
+                        document.querySelector("#ft-3dModel").style.animation = "none";
+                        document.querySelector(".ft-wrapper").style.animation = "none";
+                        document.querySelector(".navbar-text").style.animation = "none";
+                        document.querySelector("#mg").style.animation = "none";
+                        document.querySelector("#ct").style.animation = "none";
+                        document.querySelector("#active-contact").style.animation = "none";
+                        document.querySelector(".ct-mg").style.animation = "none";
+                        document.querySelector(".ct-mg").classList.remove("ct-mg-chng-two");
+                        document.querySelector(".ct-mg").classList.add("ct-mg-chng-one");
+                        click=false;
+                    }
+                }
     </script>
 
 </body>

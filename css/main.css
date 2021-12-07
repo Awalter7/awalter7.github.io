@@ -44,6 +44,8 @@
     border-radius: 20px 20px 20px 0px;
     width: 800px;
     font-family: emoFont;
+    
+    margin-top: -500px;
     background-color: rgba(243, 220, 190, 0.925);
     font-size: 32px;
     position: relative;
@@ -174,6 +176,11 @@
   } 
   .austin-wrapper{
     top: 3000px; 
+  }
+  .austin-inner-span, .onan-inner-span,  .izzy-inner-span{
+    position: relative;
+    width: 500px;
+    height: 100px;
   }
   .izzy-wrapper{
     top: 4400px;
@@ -707,9 +714,13 @@ html{
     border-left: 3px solid rgba(243, 220, 190, 0.925); 
     height: 100%;
   }
-  .ct-mg #mg-Link:hover #mg{ 
+  .ct-mg-chng-one #mg-Link:hover #mg, .ct-mg-chng-one #ct-Link:hover #ct, .onan-chng-one .onan-inner-span:hover{ 
     background-color: rgba(243, 220, 190, 0.925);
    color: black; 
+  }
+  .ct-mg-chng-two #mg-Link:hover #mg, .ct-mg-chng-two #ct-Link:hover #ct, .onan-chng-two .onan-inner-span:hover .onan-inner-span{ 
+    background: #ffffff;
+    color: rgb(0, 0, 0);
   }
   .main-wrapper { 
     -webkit-font-smoothing: antialiased;
@@ -1097,7 +1108,13 @@ html{
     color: rgb(194, 193, 193); 
     text-decoration: none; 
   } 
-
+  .austin-wrapper a, .onan-wrapper a, .izzy-wrapper a{
+    color: rgb(194, 193, 193); 
+  }
+  .austin-wrapper a:hover, .onan-wrapper a:hover, .izzy-wrapper a:hover{
+    text-decoration: none;
+    color:white;
+  }
   #nav-item-3{ 
     margin-right: 50px; 
   } 
@@ -1110,13 +1127,13 @@ html{
     top: 0px; 
   } 
 
-  .navbar .nav-item:hover{ 
+  .nav-item:hover{ 
     
     text-decoration: none; 
     transition: .5s; 
   } 
 
-  .navbar .nav-item::after{ 
+  .nav-item::after{ 
     content: ""; 
     background: rgba(243, 220, 190, 0.925); 
     mix-blend-mode:saturation; 
@@ -1127,12 +1144,15 @@ html{
     left: -10px; 
     transition: all .3s cubic-bezier(0.445, 0.05, 0.55, 0.95); 
   } 
+  .nav-item:hover{ 
+    color: black;
+  } 
   .navbar-text{
     position: relative;
     left: 250px;
     color: rgba(243, 220, 190, 0.925); 
   }
-  .navbar .nav-item:hover::after{ 
+  .nav-item:hover::after{ 
     height: calc(100% + 8px) 
   } 
   @media only screen and (max-width: 1200px) {
@@ -1148,6 +1168,7 @@ html{
     .izzy-wrapper{
       margin-top: 900px;
     }
+
     
   }
 
@@ -1357,15 +1378,16 @@ html{
       margin-left: 0px;
     }
   }
-  @media only screen and (max-width: 1600px) {
+  @media only screen and (max-width: 900px) {
     .sticky-1{
-      position: sticky;
-      position: -webkit-sticky;
-      background: #f83c2300;
-      top: 2300px;
+      visibility: hidden;
     }
     
-  
+    .general-wrapper{
+      top: 7100px;
+      text-align: center;
+      font-size: 80px;
+    }
     #sticky-p{
       height: 150px;
       padding: 50px;
@@ -1386,14 +1408,15 @@ html{
       background: #f83c2300;
       top: 800px;
     }
+    
 
     #sticky-p{
       height: 200px;
       padding: 50px;
       padding-top: 30px;
       padding-left: 400px;
-      top: -300px;
-      margin-left: -1150px;
+      top: -60px;
+      margin-left: -1100px;
     }
     .tp-wrapper{
       top: 0px;
@@ -1425,6 +1448,29 @@ html{
     .box1, .box2, .circle .circle p{
       visibility: visible;
     }
+    .ft-wrapper{ 
+      position: relative;
+      display: grid;
+      top: 6000px;
+      margin-top: 200px;
+      grid-template-columns: 25% auto 25%; 
+      grid-template-rows: 25% 25% 25%  25%; 
+      grid-template-areas: "left center right" "left center right" "left center right" "left center right";
+    }
+    .ft-center{
+      border-bottom: none;
+    }
+    .ft-left{
+      border-bottom: none;
+      border-right: 1px solid black;
+    }
+    .ft-right{
+      border-bottom: none;
+      border-left: 1px solid black;
+    }
+    .ft-wrapper h1{
+      border-bottom: 1px solid black;
+    }
 
   }
   @media only screen and (min-width: 1900px) {
@@ -1450,8 +1496,8 @@ html{
       padding: 50px;
       padding-top: 30px;
       padding-left: 300px;
-      margin-top: -50px;
-      margin-left: -1000px;
+      top: -60px;
+      margin-left: -900px;
     }
     .general-wrapper{
       font-size: 150px;
@@ -1479,6 +1525,27 @@ html{
     .box1, .box2, .circle .circle p{
       visibility: visible;
     }
+    .ft-wrapper{ 
+      display: grid;
+      top: 6000px;
+      grid-template-columns: 25% auto 25%; 
+      grid-template-rows: 25% 25% 25%  25%; 
+      grid-template-areas: "left center right" "left center right" "left center right" "left center right";
+    }
+    .ft-center{
+      border-bottom: none;
+    }
+    .ft-left{
+      border-bottom: none;
+      border-right: 1px solid black;
+    }
+    .ft-right{
+      border-bottom: none;
+      border-left: 1px solid black;
+    }
+    .ft-wrapper h1{
+      border-bottom: 1px solid black;
+    }
   }
   @media only screen and (min-width: 2000px) {
     .sticky-1{
@@ -1493,10 +1560,11 @@ html{
       padding: 50px;
       padding-top: 30px;
       padding-left: 300px;
-      margin-top: -700px;
-      margin-left: -1000px;
+      margin-top: -1050px;
+      margin-left: -900px;
     }
-  
+
+
     .tp-wrapper{
       top: 0px;
       grid-template-rows: 20% 60% 30%;
