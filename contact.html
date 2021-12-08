@@ -107,8 +107,36 @@
         </div>
     </div>
     <script>
+        const firebaseConfig = {
+          apiKey: "AIzaSyCkO7Ji9Uj_WLUf0FVblxa88Bw4vJnX3lg",
+          authDomain: "project-csci225.firebaseapp.com",
+          projectId: "project-csci225",
+          storageBucket: "project-csci225.appspot.com",
+          messagingSenderId: "29085226297",
+          appId: "1:29085226297:web:ea69b284328e45a0cf84e8",
+          measurementId: "G-3NWJBCXXVH"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+    $("#contactform").submit(function(e) {
+        e.preventDefault();
+
+        
+        var inputJSON = { 
+            fName: document.querySelector('#nameFirst').value,
+            lName: document.querySelector('#nameLast').value,
+            email: document.querySelector('#email').value,
+            msg: document.querySelector('#message').value,
+        }
+                
+                
+        firebase.firestore().collection("contact").add(inputJSON);
+
+    });
     function hideDiv(){
         $(".contact-frm").hide();
+       ;
     }
     $("#ct-Link").on('click', function(){
         $(".contact-frm").show();
