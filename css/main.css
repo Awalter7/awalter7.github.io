@@ -507,6 +507,12 @@
     width: 150px;
     height: 40px;
   }
+  #ft-cover-btn{
+    top: 0px;
+  }
+  #ft-cover{
+    top: 300px;
+  }
   #ft-contact{
     top: -200px;
   }
@@ -520,6 +526,21 @@
   }
   .ft-wrapper .ft-center h1{
     margin-left: 0px;
+  }
+  .cover-main-wrapper{
+    padding: 200px;
+  }
+  #h1-cover,   #h2-cover,  #h3-cover{
+    font-family: emoFont;
+    font-size: 100px;
+    color: rgba(243, 220, 190, 0.925); 
+  }
+  #p1-cover, #p2-cover, .cover-main-wrapper ul{
+    line-height: 40px;
+    padding-left: 200px;
+    font-family: emoFont-thin;
+    margin-top: 50px;
+    color: rgb(194, 193, 193);
   }
   .ft-wrapper h1{
     font-family: emofont;
@@ -799,7 +820,27 @@ html{
     background-color: rgb(0, 0, 0); 
     z-index: 49; 
   }
+  .pg-loader3{
+    transition: all 5s;
+    text-align: center;
+    transform: scale(1);
+    position: fixed; 
+    color:white; 
+    top:0px; 
+    left: 0px; 
+    height: 100%; 
+    width:100%; 
+    background-color: rgb(0, 0, 0); 
+    z-index: 20; 
+  }
   .pg-loader2 span{
+    position: relative;
+    top: 45%;
+    font-size: 2vw;
+    font-family: emofont-thin;
+    color: rgb(243, 220, 190);
+  }
+  .pg-loader3 span{
     position: relative;
     top: 45%;
     font-size: 2vw;

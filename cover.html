@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link rel ="stylesheet" href="css/main.css"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
+    <title>Document</title>
+</head>
+<body>
+    
+
+<div class="cover-main-wrapper"> 
+    <nav class="navbar navbar-custom fixed-top navbar-expand-lg"> 
+        <span class="navbar-text navbar-text d-none d-sm-none d-md-block d-lg-block d-xl-block"> 
+            [AIO] 
+        </span> 
+        <div class="navbar-nav ml-auto"> 
+            
+            <div class="navbar-brand"> 
+                <a class="nav-item nav-link  brand-cont" id = "offset" href="index.html" data-text="USCA"><p>Home</p></a> 
+                 
+            </div> 
+            <a class="nav-link" id = "active-contact"  href="" data-text="Contact">cover-p<span class="sr-only">(current)</span></a> 
+            <a class="nav-item nav-link nav-link " href="contact.html" data-text="Contact">contact<span class="sr-only">(current)</span></a>  
+            <a class="nav-item nav-link" href="https://www.usca.edu" data-text="USCA">usca</a> 
+            <a class="nav-item nav-link " id = "nav-item-3" href="https://www.github.com/awalter7" data-text="GitHub">gitHub</a> 
+        </div> 
+    </nav> 
+    <div class="cover-content">
+        
+        <h1 id = "h1-cover">Who is our group</h1>
+        <p id = "p1-cover">
+            Austin is the group leader and created most of the web development aspects of the website. Onanonen was responsible for 
+            creating the 3d models as well as the 3d model viewer that can be accessed through the models on the home page or through
+            the footer. Izzy helped develop the contact forms and connect them to the database, allowing the users to speak through 
+            the message board to other users, and email each of the developers.
+            <br>
+            <br>
+            Our emails can be found in the footer.
+        </p>
+
+        <h2 id = "h2-cover">What is our project</h2>
+        <p id = "p2-cover">
+            We decided for our project for CSCI225 to come together and create a portfolio webpage to display each member's abilities.
+            From our home page, you can access 3d models that are interactable, you can use the contact form to email or message other users, 
+            view and read our interactable website with beautiful css design 
+        </p >
+
+        <h3 id = "h3-cover">Bug Report</h3>
+        <p id = "p3-cover">
+           <ul>
+               <li>When the page first starts to load, the users isnt locked to the top of the page.</li>
+               <li>When you open the contact page, there is a visual flicker of the contact form before it is acutally hidden.</li>
+               <li>There is a visual bug that occurs when a user clicks on the button to access the live chat. </li>
+               <li>The chat text is always aligned to the right</li>
+               <li>The chat will not format into a larger text bubble if the user's input doesn't have spaces inbetween characters. </li>
+               <li>The chat is also slightly off center.</li>
+               <li>Sometimes when reloading the main page, the website will not scale properly even after rescaling the page. </li>
+               <li>With the models, a user has to deselect a model or else they well overlay each other. </li>
+               <li>At the footer, the icons to social media platforms are not actually linked to anything.</li>
+               <li>When you have the color mode on, hovering over the nav links with keep the default color.</li>
+           </ul>
+        </p>
+    </div>
+    
+</div>
+<div class = "ft-wrapper" id = "ft-cover"> 
+    <div class = "ft-center">
+        <h1 id = "ft-about">About Us</h1>
+        <div id = "ft-right-content">
+            <p>
+                Our group is comprised of creative individuals who have found a passion in computer programming. 
+                While some of our members find greater abuilities in other sectors of the proggraming vurse, 
+                we have come together to demenstrate what the collaberation of those skills can do
+            </p>
+            <span id = "ft-contact">
+                <span ><a href="contact.html" id = "ft-contact-wd">Contact</a></span> us. we are always looking for new projects
+            </span>
+            <img id = "ft-img" src="img\100-1008343_black-and-white-social-media-icon-png-clipart.png" alt="">
+        </div>
+    </div>
+    <div class="ft-right">
+        <h1 id = "ft-right-header">Quick Actions</h1>
+        <div id = "ft-right-content">
+            <button id="ft-chg-color" name="ft-chg-color" onclick="changeColor()">Color Mode</button>
+            <br>
+            <button id="ft-3dModel" name="ft-3dModel" onclick="window.location.href='3dmodelthing.html';">View Models</button>
+            <br>
+            <button id="ft-message" name="ft-message" onclick="window.location.href='message.html';">Msg-Board</button>
+            <br>
+            <button id="ft-cover-btn" name="ft-cover-btn" onclick="window.location.href='cover.html';">Cover-Page</button>
+    
+        </div>
+    </div>
+    <div class="ft-left">
+        <h1>Email</h1>
+        <div id = "ft-left-content">
+            <span>Austin: aawalter@usca.edu</span>
+            <br>
+            <br>
+            <span>Onan: iervin@usca.edu</span>
+            <br>
+            <br>
+            <span>Izzy: ochew@usca.edu</span>
+        </div>  
+    </div>
+</div>
+<script>
+        var click = false;
+                function changeColor(){
+
+                    if(click == false){
+                        document.querySelector("#ft-chg-color").style.animation = "rainbow-bg 10s linear infinite";
+                        document.querySelector("#h1-cover").style.animation = "rainbow 10s linear infinite";
+                        document.querySelector("#h2-cover").style.animation = "rainbow 10s linear infinite";
+                        document.querySelector("#h3-cover").style.animation = "rainbow 10s linear infinite";
+                        document.querySelector("#ft-3dModel").style.animation = "rainbow-bg 10s linear infinite";
+                        document.querySelector("#ft-message").style.animation = "rainbow-bg 10s linear infinite";
+                        document.querySelector("#ft-cover-btn").style.animation = "rainbow-bg 10s linear infinite";
+                        document.querySelector(".ft-wrapper").style.animation = "rainbow-bg 10s linear infinite";
+                        document.querySelector("#active-contact").style.animation = "rainbow 10s linear infinite";
+                        document.querySelector(".navbar-text").style.animation = "rainbow 10s linear infinite";
+
+                        click=true;
+                    }else{
+                        click=false;
+                        
+                        document.querySelector("#ft-chg-color").style.animation = "none";
+                        document.querySelector("#h1-cover").style.animation = "none";
+                        document.querySelector("#h2-cover").style.animation = "none";
+                        document.querySelector("#h3-cover").style.animation = "none";
+                        document.querySelector("#ft-3dModel").style.animation = "none";
+                        document.querySelector("#ft-message").style.animation = "none";
+                        document.querySelector("#ft-cover-btn").style.animation = "none";
+                        document.querySelector(".ft-wrapper").style.animation = "none";
+                        document.querySelector("#active-contact").style.animation = "none";
+                        document.querySelector(".navbar-text").style.animation = "none";
+                        click=false;
+                    }
+                }
+    </script>
+</script>
+
+</body>
+
+</html>
