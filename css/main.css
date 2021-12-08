@@ -64,21 +64,6 @@
     font-size: 30px;
     float: left;
   }
-  .general-wrapper{
-    position: absolute;
-    font-family: emofont;
-    font-size: 60px;
-    display: grid;
-    width: 100%;
-    height: 2500px;
-    grid-template-areas: "text";
-    top: 5500px;
-  }
-
-  .general-wrapper p{
-    grid-area: text;
-  }
-
   #welcome-text{ 
     position: relative;
     grid-area: sidebar;
@@ -1217,6 +1202,16 @@ html{
 
     
   }
+  @media only screen and (max-width: 600px) {
+    nav .navbar-brand{
+
+      visibility: hidden;
+
+    }
+    nav{
+      margin-left: 120px;
+    }
+  }
 
   @media only screen and (max-width: 1000px) {
     nav .navbar-text{
@@ -1225,20 +1220,20 @@ html{
     }
     nav .nav-item:nth-child(3){
       position: absolute;
-      top: -40px;
+      top: 0px;
       left: 250px;
 
     }
     nav .nav-item:nth-child(2){
       position: absolute;
       left: 100px;
-      top: -40px;
+      top: 0px;
 
     }
     nav .nav-item:nth-child(4){
       position: absolute;
       left: 370px;
-      top: -40px;
+      top: 0px;
 
     }
     nav .navbar-brand{
@@ -1383,6 +1378,10 @@ html{
     }
   }
   @media only screen and (min-width: 1000px) {
+    nav .navbar-text{
+      visibility: visible;
+    }
+
     .chat-message{
       border-radius: 20px 20px 0px 20px;
       border-right: 10px solid rgba(243, 220, 190, 0.521);
@@ -1455,12 +1454,6 @@ html{
       visibility: hidden;
     }
     
-    .general-wrapper{
-      top: 7100px;
-      text-align: center;
-      font-size: 80px;
-    }
-
   }
   @media only screen and (max-width: 1450px) {
     .sticky-1{
@@ -1473,6 +1466,12 @@ html{
       top: 20px;
     }
   }
+  @media only screen and (min-width: 900px) {
+    .austin-wrapper, .izzy-wrapper, .onan-wrapper{
+      left: 150px;
+    }
+  }
+
 
 
 
@@ -1528,6 +1527,9 @@ html{
       grid-template-rows: 25% 25% 25%  25%; 
       grid-template-areas: "left center right" "left center right" "left center right" "left center right";
     }
+    #ft-main{
+      margin-top: -1000px;
+    }
     .ft-center{
       border-bottom: none;
     }
@@ -1544,6 +1546,7 @@ html{
     }
 
   }
+
   @media only screen and (min-width: 1900px) {
       .chat-message{
         border-radius: 20px 20px 0px 20px;
@@ -1556,11 +1559,6 @@ html{
         left: -160px;
       }
 
-    .general-wrapper{
-      font-size: 150px;
-      grid-template-columns: 10% auto 45%;
-      grid-template-areas: "temp text temp1";
-    }
     .tp-wrapper{
       top: 0px;
       grid-template-rows: 20% 60% 30%;
