@@ -1367,18 +1367,46 @@ html{
     .tp-wrapper{
       left: -50px;
     }
+
+  }
+  @media only screen and (min-width: 800px) {
     .chat-message{
       border-radius: 20px 20px 0px 20px;
       border-right: 10px solid rgba(243, 220, 190, 0.521);
-      left: -15vw;
+      left: -100px;
     }
     
     .chat-message1{
       border-radius: 20px 20px 20px 0px;
       border-left: 10px solid rgba(243, 220, 190, 0.521);
-      left: -50vw;
+      left: 490px;
     }
-
+  }
+  @media only screen and (min-width: 1000px) {
+    .chat-message{
+      border-radius: 20px 20px 0px 20px;
+      border-right: 10px solid rgba(243, 220, 190, 0.521);
+      left: -100px;
+    }
+    
+    .chat-message1{
+      border-radius: 20px 20px 20px 0px;
+      border-left: 10px solid rgba(243, 220, 190, 0.521);
+      left: 390px;
+    }
+  }
+  @media only screen and (min-width: 1300px) {
+    .chat-message{
+      border-radius: 20px 20px 0px 20px;
+      border-right: 10px solid rgba(243, 220, 190, 0.521);
+      left: -100px;
+    }
+    
+    .chat-message1{
+      border-radius: 20px 20px 20px 0px;
+      border-left: 10px solid rgba(243, 220, 190, 0.521);
+      left: 250px;
+    }
   }
   @media only screen and (min-width: 1450px) {
     .tp-wrapper{
@@ -1387,6 +1415,18 @@ html{
       grid-template-columns: 10% 50% 28% 2%;
       grid-template-areas: "top top top top" "test2 sidebar content test" "bottom bottom bottom bottom";
       left: 0px;
+    }
+
+    .chat-message{
+      border-radius: 20px 20px 0px 20px;
+      border-right: 10px solid rgba(243, 220, 190, 0.521);
+      left: -100px;
+    }
+    
+    .chat-message1{
+      border-radius: 20px 20px 20px 0px;
+      border-left: 10px solid rgba(243, 220, 190, 0.521);
+      left: 150px;
     }
 
     .lrg-active-wraper{
@@ -1433,7 +1473,22 @@ html{
       top: 20px;
     }
   }
+
+
+
   @media only screen and (min-width: 1600px) {
+    
+    .chat-message{
+      border-radius: 20px 20px 0px 20px;
+      border-right: 10px solid rgba(243, 220, 190, 0.521);
+      left: -100px;
+    }
+    
+    .chat-message1{
+      border-radius: 20px 20px 20px 0px;
+      border-left: 10px solid rgba(243, 220, 190, 0.521);
+      left: 50px;
+    }
     .tp-wrapper{
       top: 0px;
       grid-template-rows: 20% 60% 30%;
@@ -1490,18 +1545,17 @@ html{
 
   }
   @media only screen and (min-width: 1900px) {
+      .chat-message{
+        border-radius: 20px 20px 0px 20px;
+        border-right: 10px solid rgba(243, 220, 190, 0.521);
+        left: -100px;
+      }
+      .chat-message1{
+        border-radius: 20px 20px 20px 0px;
+        border-left: 10px solid rgba(243, 220, 190, 0.521);
+        left: -160px;
+      }
 
-    .chat-message{
-      border-radius: 20px 20px 0px 20px;
-      border-right: 10px solid rgba(243, 220, 190, 0.521);
-      left: -15vw;
-    }
-    
-    .chat-message1{
-      border-radius: 20px 20px 20px 0px;
-      border-left: 10px solid rgba(243, 220, 190, 0.521);
-      left: -250vw;
-    }
     .general-wrapper{
       font-size: 150px;
       grid-template-columns: 10% auto 45%;
@@ -1609,7 +1663,9 @@ html{
   transform: scale(1);
 }
 
-
+#message-body{
+  zoom: 1.5;
+}
 .visually-hidden {
   position: absolute;
 
@@ -1659,13 +1715,13 @@ html{
 .chat-message{
   border-radius: 20px 20px 0px 20px;
   border-right: 10px solid rgba(243, 220, 190, 0.521);
-  margin-right: 0px;
+  margin-left: 150px; 
 }
 
 .chat-message1{
   border-radius: 20px 20px 20px 0px;
   border-left: 10px solid rgba(243, 220, 190, 0.521);
-  margin-left: -100px;
+  margin-left: -650px;
 }
 
 .chat-message:hover .chat-message-button,
@@ -1730,7 +1786,8 @@ html{
   display: flex;
   font-family: sans-serif;
   align-items: center;
-  padding: 32px 20px;
+
+  padding: 32px  90px 20px;
   background-color:  rgb(243, 220, 190);
 }
 
